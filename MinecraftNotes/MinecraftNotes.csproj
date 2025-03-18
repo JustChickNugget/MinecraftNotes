@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
+        <Title>MinecraftNotes</Title>
+        <Authors>JustChickNugget</Authors>
+        <Copyright>JustChickNugget</Copyright>
+        <RepositoryUrl>https://github.com/JustChickNugget/MinecraftNotes</RepositoryUrl>
+        <Company>JustChickNugget</Company>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <FileVersion>1.0.0</FileVersion>
+        <Description>Take notes about your Minecraft worlds</Description>
+        <Version>1.0.0</Version>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DebugType>portable</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+</Project>
