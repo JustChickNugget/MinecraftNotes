@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Minecraft Notes" Height="550" Width="725" MinHeight="550" MinWidth="725"
-        WindowStartupLocation="CenterScreen">
+        Title="Minecraft Notes" Height="550" Width="750" MinHeight="550" MinWidth="750"
+        WindowStartupLocation="CenterScreen" Loaded="Window_OnLoaded" KeyDown="Window_OnKeyDown">
     
-    <Grid Loaded="OnLoaded" KeyDown="OnKeyDown">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="250" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
@@ -20,7 +20,8 @@
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Application">
-                    <MenuItem Header="Information" Click="ApplicationInformationMenuItem_Click" />
+                    <MenuItem Header="About" Click="ApplicationInformationMenuItem_Click" />
+                    <MenuItem Header="Check for updates" Click="ApplicationCheckForUpdatesMenuItem_Click" />
                 </MenuItem>
                 <MenuItem Header="Developer">
                     <MenuItem Header="GitHub" Click="DeveloperGitHubMenuItem_Click" />
@@ -43,24 +44,24 @@
                 <StackPanel>
                     <Label Margin="15 5 15 0" Content="World's place location (X, Y, Z):" />
                     
-                    <DockPanel Margin="15 0">
-                        <TextBox x:Name="PlaceLocationXTextBox" DockPanel.Dock="Left" Margin="0 0 15 0" MinWidth="200" />
-                        <TextBox x:Name="PlaceLocationZTextBox" DockPanel.Dock="Right" Margin="15 0 0 0" MinWidth="200" />
-                        <TextBox x:Name="PlaceLocationYTextBox" MinWidth="200" />
+                    <DockPanel LastChildFill="True" Margin="15 0">
+                        <TextBox x:Name="PlaceLocationXTextBox" DockPanel.Dock="Left" Margin="0 0 15 0" MinWidth="210" />
+                        <TextBox x:Name="PlaceLocationZTextBox" DockPanel.Dock="Right" Margin="15 0 0 0" MinWidth="210" />
+                        <TextBox x:Name="PlaceLocationYTextBox" MinWidth="210" />
                     </DockPanel>
                 </StackPanel>
                 
-                <Button Margin="15 15 15 0" Content="Add" Click="WorldAddButton_Click" />
+                <Button Margin="15 15 15 15" Content="Add" Click="WorldAddButton_Click" />
             </StackPanel>
         </GroupBox>
         
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="275" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <ListBox x:Name="WorldListBox" Grid.Column="0" Margin="15 0 5 15" SelectionChanged="WorldsListBox_SelectionChanged">
+            <ListBox x:Name="WorldListBox" Grid.Column="0" Margin="15 0 5 15" Width="275" SelectionChanged="WorldsListBox_SelectionChanged">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Refresh" Click="WorldRefreshMenuItem_Click" />

@@ -13,7 +13,7 @@ internal static class Variables
         UseShellExecute = true
     };
     
-    internal static ProcessStartInfo GitHubProcessStartInfo { get; } = new()
+    internal static ProcessStartInfo DeveloperGitHubProcessStartInfo { get; } = new()
     {
         FileName = "https://github.com/JustChickNugget",
         UseShellExecute = true

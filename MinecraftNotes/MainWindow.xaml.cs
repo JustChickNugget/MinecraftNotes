@@ -1,9 +1,12 @@
 ﻿using MinecraftNotes.Utilities;
 using MinecraftNotes.Structs;
+using MinecraftNotes.Structs.API;
 using MinecraftNotes.Other;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Reflection;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -210,7 +213,46 @@ public partial class MainWindow
                 
                 - Take notes about your Minecraft worlds
                 """,
-                "Application information", MessageBoxButton.OK, MessageBoxImage.Information);
+                "Application Information", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        catch (Exception ex)
+        {
+            PrintException(ex);
+        }
+    }
+    
+    private async void ApplicationCheckForUpdatesMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            using HttpClient client = new();
+            client.DefaultRequestHeaders.Add("User-Agent", "MinecraftNotes");
+            
+            string response = await client.GetStringAsync
+                ("https://api.github.com/repos/JustChickNugget/MinecraftNotes/releases/latest");
+
+            GitHubApiResponse gitHubApiResponse = JsonSerializer.Deserialize<GitHubApiResponse>(response);
+
+            Version? currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            Version latestReleaseVersion = Version.Parse(gitHubApiResponse.TagName + ".0");
+
+            if (latestReleaseVersion.CompareTo(currentVersion) >= 1)
+            {
+                if (MessageBox.Show("An update is available. Would you like to download the update?", "Update checker",
+                        MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = "https://github.com/JustChickNugget/MinecraftNotes/releases/latest",
+                        UseShellExecute = true
+                    });
+                }
+            }
+            else
+            {
+                MessageBox.Show("Current version is up to date.", "Update Checker",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
         catch (Exception ex)
         {
@@ -224,7 +266,7 @@ public partial class MainWindow
         
         try
         {
-            Process.Start(Variables.GitHubProcessStartInfo);
+            Process.Start(Variables.DeveloperGitHubProcessStartInfo);
         }
         catch (Exception ex)
         {
@@ -234,7 +276,7 @@ public partial class MainWindow
     
     // Other events
     
-    private void OnLoaded(object sender, RoutedEventArgs e)
+    private void Window_OnLoaded(object sender, RoutedEventArgs e)
     {
         // Get JSON data on application load.
         
@@ -248,8 +290,10 @@ public partial class MainWindow
         }
     }
     
-    private void OnKeyDown(object sender, KeyEventArgs e)
+    private void Window_OnKeyDown(object sender, KeyEventArgs e)
     {
+        // If user clicks enter, then the button that adds world to the JSON file will be clicked.
+        
         try
         {
             if (e.Key != Key.Enter)
