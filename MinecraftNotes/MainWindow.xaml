@@ -44,11 +44,17 @@
                 <StackPanel>
                     <Label Margin="15 5 15 0" Content="World's place location (X, Y, Z):" />
                     
-                    <DockPanel LastChildFill="True" Margin="15 0">
-                        <TextBox x:Name="PlaceLocationXTextBox" DockPanel.Dock="Left" Margin="0 0 15 0" MinWidth="210" />
-                        <TextBox x:Name="PlaceLocationZTextBox" DockPanel.Dock="Right" Margin="15 0 0 0" MinWidth="210" />
-                        <TextBox x:Name="PlaceLocationYTextBox" MinWidth="210" />
-                    </DockPanel>
+                    <Grid Margin="15 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBox x:Name="PlaceLocationXTextBox" Grid.Column="0" Margin="0 0 10 0" />
+                        <TextBox x:Name="PlaceLocationYTextBox" Grid.Column="1" Margin="5 0" />
+                        <TextBox x:Name="PlaceLocationZTextBox" Grid.Column="2" Margin="10 0 0 0" />
+                    </Grid>
                 </StackPanel>
                 
                 <Button Margin="15 15 15 15" Content="Add" Click="WorldAddButton_Click" />
