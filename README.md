@@ -4,10 +4,19 @@
 
 If you have trouble remembering where certain places are in your worlds, you can create notes of some of the places you have created or found in the world.
 
-## Tips
+## System Requirements 
 
-1. Location's input has format: "{X} {Y} {Z}" and is separated by spaces.
+- Windows 10/11 (64-bit)
+- [.NET Desktop Runtime 9.0 (64-bit)](https://dotnet.microsoft.com/download/dotnet/9.0)
+
+## Usage
+
+There is no need to install the program, it is already ready to run.
 
 ## Screenshots
 
 ![MainWindow.png](Images/MainWindow.png)
+
+## License
+
+"Minecraft Notes" is distributed under the [MIT License](LICENSE).
