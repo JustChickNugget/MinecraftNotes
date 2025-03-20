@@ -35,18 +35,18 @@ public partial class MainWindow
             if (string.IsNullOrEmpty(placeName))
                 throw new ArgumentNullException(null, "Place name cannot be null or empty.");
             
-            string placeLocation = PlaceLocationTextBox.Text;
+            string placeLocationX = PlaceLocationXTextBox.Text;
+            string placeLocationY = PlaceLocationYTextBox.Text;
+            string placeLocationZ = PlaceLocationZTextBox.Text;
 
-            if (string.IsNullOrEmpty(placeLocation))
+            if (string.IsNullOrEmpty(placeLocationX) && string.IsNullOrEmpty(placeLocationY) && string.IsNullOrEmpty(placeLocationZ))
                 throw new ArgumentNullException(null, "Place location cannot be null or empty.");
-            
-            List<string> placeLocationSplit = placeLocation.Split(' ').ToList();
             
             Location location = new()
             {
-                X = placeLocationSplit.ElementAtOrDefault(0) != null ? int.Parse(placeLocationSplit[0]) : 0,
-                Y = placeLocationSplit.ElementAtOrDefault(1) != null ? int.Parse(placeLocationSplit[1]) : 0,
-                Z = placeLocationSplit.ElementAtOrDefault(2) != null ? int.Parse(placeLocationSplit[2]) : 0
+                X = string.IsNullOrEmpty(placeLocationX) ? 0 : int.Parse(placeLocationX),
+                Y = string.IsNullOrEmpty(placeLocationY) ? 0 : int.Parse(placeLocationY),
+                Z = string.IsNullOrEmpty(placeLocationZ) ? 0 : int.Parse(placeLocationZ)
             };
 
             WorldPlace worldPlace = new()

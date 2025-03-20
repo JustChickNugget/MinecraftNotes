@@ -41,8 +41,13 @@
                 </StackPanel>
             
                 <StackPanel>
-                    <Label Margin="15 5 15 0" Content="World's place location (separate by space):" />
-                    <TextBox x:Name="PlaceLocationTextBox" Margin="15 0" />
+                    <Label Margin="15 5 15 0" Content="World's place location (X, Y, Z):" />
+                    
+                    <DockPanel Margin="15 0">
+                        <TextBox x:Name="PlaceLocationXTextBox" DockPanel.Dock="Left" Margin="0 0 15 0" MinWidth="200" />
+                        <TextBox x:Name="PlaceLocationZTextBox" DockPanel.Dock="Right" Margin="15 0 0 0" MinWidth="200" />
+                        <TextBox x:Name="PlaceLocationYTextBox" MinWidth="200" />
+                    </DockPanel>
                 </StackPanel>
                 
                 <Button Margin="15 15 15 0" Content="Add" Click="WorldAddButton_Click" />
