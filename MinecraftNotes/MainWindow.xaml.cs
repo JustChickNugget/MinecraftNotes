@@ -101,10 +101,14 @@ public partial class MainWindow
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0)
                 return;
+
+            foreach (object selectedItem in WorldListBox.SelectedItems)
+            {
+                string worldName = (string)selectedItem;
+                Worlds.Remove(worldName);
+            }
             
-            Worlds.Remove((string)WorldListBox.SelectedItem);
             JsonUtilities.SaveWorldData(Worlds);
-            
             WorldRefreshMenuItem_Click(this, new RoutedEventArgs());
         }
         catch (Exception ex)

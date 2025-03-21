@@ -67,7 +67,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <ListBox x:Name="WorldListBox" Grid.Column="0" Margin="15 0 5 15" Width="275" SelectionChanged="WorldsListBox_SelectionChanged">
+            <ListBox x:Name="WorldListBox" Grid.Column="0" Margin="15 0 5 15" Width="275" SelectionMode="Extended"
+                     SelectionChanged="WorldsListBox_SelectionChanged">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Refresh" Click="WorldRefreshMenuItem_Click" />
