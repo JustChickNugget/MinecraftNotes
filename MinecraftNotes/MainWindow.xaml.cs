@@ -28,19 +28,19 @@ public partial class MainWindow
         
         try
         {
-            string worldName = WorldNameTextBox.Text;
+            string worldName = WorldNameTextBox.Text.Trim();
 
             if (string.IsNullOrEmpty(worldName))
                 throw new ArgumentNullException(null, "World name cannot be null or empty.");
         
-            string placeName = PlaceNameTextBox.Text;
+            string placeName = PlaceNameTextBox.Text.Trim();
             
             if (string.IsNullOrEmpty(placeName))
                 throw new ArgumentNullException(null, "Place name cannot be null or empty.");
             
-            string placeLocationX = PlaceLocationXTextBox.Text;
-            string placeLocationY = PlaceLocationYTextBox.Text;
-            string placeLocationZ = PlaceLocationZTextBox.Text;
+            string placeLocationX = PlaceLocationXTextBox.Text.Trim();
+            string placeLocationY = PlaceLocationYTextBox.Text.Trim();
+            string placeLocationZ = PlaceLocationZTextBox.Text.Trim();
 
             if (string.IsNullOrEmpty(placeLocationX) && string.IsNullOrEmpty(placeLocationY) && string.IsNullOrEmpty(placeLocationZ))
                 throw new ArgumentNullException(null, "Place location cannot be null or empty.");
