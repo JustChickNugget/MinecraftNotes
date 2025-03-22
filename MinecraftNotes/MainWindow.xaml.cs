@@ -43,9 +43,6 @@ public partial class MainWindow
             string placeLocationY = PlaceLocationYTextBox.Text.Trim();
             string placeLocationZ = PlaceLocationZTextBox.Text.Trim();
 
-            if (string.IsNullOrEmpty(placeLocationX) && string.IsNullOrEmpty(placeLocationY) && string.IsNullOrEmpty(placeLocationZ))
-                throw new ArgumentNullException(null, "Place location cannot be null or empty.");
-
             Location location = new()
             {
                 X = string.IsNullOrEmpty(placeLocationX) ? 0 : int.Parse(placeLocationX),

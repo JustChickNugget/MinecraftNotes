@@ -40,9 +40,6 @@ public partial class EditPlaceWindow
             
             if (string.IsNullOrEmpty(newPlaceName))
                 throw new ArgumentNullException(null, "New place name cannot be null or empty.");
-            
-            if (string.IsNullOrEmpty(newPlaceLocationX) && string.IsNullOrEmpty(newPlaceLocationY) && string.IsNullOrEmpty(newPlaceLocationZ))
-                throw new ArgumentNullException(null, "New place location cannot be null or empty.");
 
             if (Worlds == null)
                 throw new ArgumentNullException(null, "Got null trying to get world values.");
