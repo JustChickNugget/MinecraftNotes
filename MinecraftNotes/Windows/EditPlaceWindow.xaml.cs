@@ -43,40 +43,37 @@ public partial class EditPlaceWindow
             
             if (string.IsNullOrEmpty(newPlaceLocationX) && string.IsNullOrEmpty(newPlaceLocationY) && string.IsNullOrEmpty(newPlaceLocationZ))
                 throw new ArgumentNullException(null, "New place location cannot be null or empty.");
-            
-            if (Worlds != null)
-            {
-                Location newLocation = new()
-                {
-                    X = string.IsNullOrEmpty(newPlaceLocationX) ? 0 : int.Parse(newPlaceLocationX),
-                    Y = string.IsNullOrEmpty(newPlaceLocationY) ? 0 : int.Parse(newPlaceLocationY),
-                    Z = string.IsNullOrEmpty(newPlaceLocationZ) ? 0 : int.Parse(newPlaceLocationZ)
-                };
 
-                WorldPlace newWorldPlace = new()
-                {
-                    Name = newPlaceName,
-                    Location = newLocation
-                };
-                
-                if (!Worlds.TryGetValue(CurrentWorldName, out List<WorldPlace>? worldPlaces))
-                    throw new ArgumentException("Got null trying to get world values.");
-                
-                if (worldPlaces.Contains(newWorldPlace))
-                    throw new ArgumentException("The new world place is already in use.");
-                
-                int currentWorldPlaceIndex = worldPlaces.FindIndex(findWorldPlace => findWorldPlace == CurrentWorldPlace);
-                worldPlaces[currentWorldPlaceIndex] = newWorldPlace;
-
-                Worlds[CurrentWorldName] = worldPlaces;
-                JsonUtilities.SaveWorldData(Worlds);
-
-                Close();
-            }
-            else
-            {
+            if (Worlds == null)
                 throw new ArgumentNullException(null, "Got null trying to get world values.");
-            }
+            
+            Location newLocation = new()
+            {
+                X = string.IsNullOrEmpty(newPlaceLocationX) ? 0 : int.Parse(newPlaceLocationX),
+                Y = string.IsNullOrEmpty(newPlaceLocationY) ? 0 : int.Parse(newPlaceLocationY),
+                Z = string.IsNullOrEmpty(newPlaceLocationZ) ? 0 : int.Parse(newPlaceLocationZ)
+            };
+
+            WorldPlace newWorldPlace = new()
+            {
+                Name = newPlaceName,
+                Location = newLocation
+            };
+
+            if (!Worlds.TryGetValue(CurrentWorldName, out List<WorldPlace>? worldPlaces))
+                throw new ArgumentException("Got null trying to get world values.");
+
+            if (worldPlaces.Contains(newWorldPlace))
+                throw new ArgumentException("The new world place is already in use.");
+
+            int currentWorldPlaceIndex =
+                worldPlaces.FindIndex(findWorldPlace => findWorldPlace == CurrentWorldPlace);
+            worldPlaces[currentWorldPlaceIndex] = newWorldPlace;
+
+            Worlds[CurrentWorldName] = worldPlaces;
+            JsonUtilities.SaveWorldData(Worlds);
+
+            Close();
         }
         catch (Exception ex)
         {
