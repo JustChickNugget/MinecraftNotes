@@ -71,7 +71,9 @@
                      SelectionChanged="WorldsListBox_SelectionChanged">
                 <ListBox.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Refresh" Click="WorldRefreshMenuItem_Click" />
+                        <MenuItem Header="Refresh" Click="RefreshMenuItem_Click" />
+                        <Separator />
+                        <MenuItem Header="Edit" Click="WorldEditMenuItem_Click" />
                         <MenuItem Header="Delete" Click="WorldDeleteMenuItem_Click" />
                     </ContextMenu>
                 </ListBox.ContextMenu>
@@ -87,6 +89,9 @@
                 
                 <ListView.ContextMenu>
                     <ContextMenu>
+                        <MenuItem Header="Refresh" Click="RefreshMenuItem_Click" />
+                        <Separator />
+                        <MenuItem Header="Edit" Click="PlaceEditMenuItem_Click" />
                         <MenuItem Header="Delete" Click="PlaceDeleteMenuItem_Click" />
                     </ContextMenu>
                 </ListView.ContextMenu>
