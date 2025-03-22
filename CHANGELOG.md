@@ -1,0 +1,26 @@
+﻿# Changelog
+
+## 1.1.0 - 2025-03-22
+
+### Added
+
+- Added update checker.
+- Added ability to edit worlds and places.
+- Added refresh button for places list view.
+
+### Changes
+
+- Window is now a little bit wider.
+- Split text boxes for "World's place location".
+- Now "Place location" inputs can be null or empty.
+- Now inputs will be trimmed.
+- Now you can select multiple worlds in world list box.
+- Updated "About" text.
+
+### Fixes
+
+- Fixed bug with overwriting world's places if adding existing element.
+
+## 1.0.0 - 2025-03-18
+
+- First version has been released.
