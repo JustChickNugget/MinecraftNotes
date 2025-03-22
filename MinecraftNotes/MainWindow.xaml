@@ -20,7 +20,7 @@
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Application">
-                    <MenuItem Header="About" Click="ApplicationInformationMenuItem_Click" />
+                    <MenuItem Header="About" Click="ApplicationAboutMenuItem_Click" />
                     <MenuItem Header="Check for updates" Click="ApplicationCheckForUpdatesMenuItem_Click" />
                 </MenuItem>
                 <MenuItem Header="Developer">

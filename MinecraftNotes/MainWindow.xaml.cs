@@ -247,18 +247,22 @@ public partial class MainWindow
         }
     }
 
-    private void ApplicationInformationMenuItem_Click(object sender, RoutedEventArgs e)
+    private void ApplicationAboutMenuItem_Click(object sender, RoutedEventArgs e)
     {
         // Shows information about the application.
 
         try
         {
+            Version appVersion = Assembly.GetExecutingAssembly().GetName().Version
+                                 ?? throw new InvalidOperationException("Application version is null or empty.");
+            
             MessageBox.Show(
                 $"""
-                 Minecraft Notes ({Assembly.GetExecutingAssembly().GetName().Version})
+                 Minecraft Notes ({appVersion.Major}.{appVersion.Minor}.{appVersion.Build})
                  Developer: JustChickNugget (2025)
-
-                 - Take notes about your Minecraft worlds
+                 - Take notes about your Minecraft worlds.
+                 
+                 Please report any bugs.
                  """,
                 "Application Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
