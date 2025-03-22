@@ -7,7 +7,7 @@ If you have trouble remembering where certain places are in your worlds, you can
 ## System Requirements 
 
 - Windows 10/11 (64-bit)
-- [.NET Desktop Runtime 9.0 (64-bit)](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [.NET 9.0 Desktop Runtime (64-bit)](https://dotnet.microsoft.com/download/dotnet/9.0)
 
 ## Usage
 
