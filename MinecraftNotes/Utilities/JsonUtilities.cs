@@ -26,8 +26,8 @@ public static class JsonUtilities
         
         if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
         {
-            Directory.CreateDirectory
-                (Path.GetDirectoryName(Variables.SavePath) ?? throw new InvalidOperationException("Directory path is null or empty."));
+            Directory.CreateDirectory(Path.GetDirectoryName(Variables.SavePath)
+                                      ?? throw new InvalidOperationException("Directory path is null or empty."));
         }
 
         Dictionary<string, List<WorldPlace>> worlds;
@@ -38,10 +38,15 @@ public static class JsonUtilities
                          (File.ReadAllText(Variables.SavePath), SerializerOptions)
                      ?? new Dictionary<string, List<WorldPlace>>();
 
-            if (worlds.TryGetValue(worldName, out List<WorldPlace>? worldPlaces) && !worldPlaces.Contains(worldPlace))
-                worldPlaces.Add(worldPlace);
+            if (worlds.TryGetValue(worldName, out List<WorldPlace>? worldPlaces))
+            {
+                if (!worldPlaces.Contains(worldPlace))
+                    worldPlaces.Add(worldPlace);
+            }
             else
+            {
                 worlds[worldName] = [worldPlace];
+            }
         }
         else
         {
@@ -63,8 +68,8 @@ public static class JsonUtilities
         
         if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
         {
-            Directory.CreateDirectory
-                (Path.GetDirectoryName(Variables.SavePath) ?? throw new InvalidOperationException("Directory path is null or empty."));
+            Directory.CreateDirectory(Path.GetDirectoryName(Variables.SavePath)
+                                      ?? throw new InvalidOperationException("Directory path is null or empty."));
         }
 
         if (!File.Exists(Variables.SavePath))
