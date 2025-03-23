@@ -82,8 +82,8 @@
             <ListView x:Name="PlaceListView" Grid.Column="1" Margin="5 0 15 15">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="200" Header="Place name" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Width="200" Header="Location" DisplayMemberBinding="{Binding Location}" />
+                        <GridViewColumn Width="200" Header="Place name" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Width="200" Header="Location" DisplayMemberBinding="{Binding Path=Location}" />
                     </GridView>
                 </ListView.View>
                 
