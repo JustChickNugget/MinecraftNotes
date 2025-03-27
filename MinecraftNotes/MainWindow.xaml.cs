@@ -91,6 +91,22 @@ public partial class MainWindow
         }
     }
 
+    private void WorldExtractMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (WorldListBox.SelectedItems.Count <= 0)
+                return;
+            
+            string worldName = (string)WorldListBox.SelectedItem;
+            WorldNameTextBox.Text = worldName;
+        }
+        catch (Exception ex)
+        {
+            ToolBox.PrintException(ex);
+        }
+    }
+    
     private void WorldEditMenuItem_Click(object sender, RoutedEventArgs e)
     {
         // Launch edit window for worlds.
@@ -137,6 +153,48 @@ public partial class MainWindow
         }
     }
 
+    private void PlaceExtractWithWorldNameMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (WorldListBox.SelectedItems.Count <= 0 || PlaceListView.SelectedItems.Count <= 0)
+                return;
+            
+            string worldName = (string)WorldListBox.SelectedItem;
+            WorldPlace worldPlace = (WorldPlace)PlaceListView.SelectedItem;
+            
+            WorldNameTextBox.Text = worldName;
+            PlaceNameTextBox.Text = worldPlace.Name;
+            PlaceLocationXTextBox.Text = worldPlace.Location.X.ToString();
+            PlaceLocationYTextBox.Text = worldPlace.Location.Y.ToString();
+            PlaceLocationZTextBox.Text = worldPlace.Location.Z.ToString();
+        }
+        catch (Exception ex)
+        {
+            ToolBox.PrintException(ex);
+        }
+    }
+    
+    private void PlaceExtractWithoutWorldNameMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (PlaceListView.SelectedItems.Count <= 0)
+                return;
+            
+            WorldPlace worldPlace = (WorldPlace)PlaceListView.SelectedItem;
+            
+            PlaceNameTextBox.Text = worldPlace.Name;
+            PlaceLocationXTextBox.Text = worldPlace.Location.X.ToString();
+            PlaceLocationYTextBox.Text = worldPlace.Location.Y.ToString();
+            PlaceLocationZTextBox.Text = worldPlace.Location.Z.ToString();
+        }
+        catch (Exception ex)
+        {
+            ToolBox.PrintException(ex);
+        }
+    }
+    
     private void PlaceEditMenuItem_Click(object sender, RoutedEventArgs e)
     {
         // Launch edit window for places.

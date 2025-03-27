@@ -72,6 +72,7 @@
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Refresh" Click="RefreshMenuItem_Click" />
+                        <MenuItem Header="Extract" Click="WorldExtractMenuItem_Click" />
                         <Separator />
                         <MenuItem Header="Edit" Click="WorldEditMenuItem_Click" />
                         <MenuItem Header="Delete" Click="WorldDeleteMenuItem_Click" />
@@ -90,6 +91,10 @@
                 <ListView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Refresh" Click="RefreshMenuItem_Click" />
+                        <MenuItem Header="Extract">
+                            <MenuItem Header="With world name" Click="PlaceExtractWithWorldNameMenuItem_Click" />
+                            <MenuItem Header="Without world name" Click="PlaceExtractWithoutWorldNameMenuItem_Click" />
+                        </MenuItem>
                         <Separator />
                         <MenuItem Header="Edit" Click="PlaceEditMenuItem_Click" />
                         <MenuItem Header="Delete" Click="PlaceDeleteMenuItem_Click" />
