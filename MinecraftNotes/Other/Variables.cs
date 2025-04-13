@@ -7,7 +7,7 @@ internal static class Variables
 {
     private static string DeveloperLink => "https://github.com/JustChickNugget";
     internal static string RepositoryLink => $"{DeveloperLink}/MinecraftNotes";
-    internal static string SavePath => $@"C:\Users\{Environment.UserName}\AppData\Local\JustChickNugget\MinecraftNotes.json";
+    internal static string SavePath => $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\JustChickNugget\MinecraftNotes.json";
 
     internal static ProcessStartInfo SavePathProcessStartInfo { get; } = new()
     {
