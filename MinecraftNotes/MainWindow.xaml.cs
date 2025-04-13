@@ -311,18 +311,8 @@ public partial class MainWindow
 
         try
         {
-            Version appVersion = Assembly.GetExecutingAssembly().GetName().Version
-                                 ?? throw new InvalidOperationException("Application version is null or empty.");
-            
-            MessageBox.Show(
-                $"""
-                 Minecraft Notes ({appVersion.Major}.{appVersion.Minor}.{appVersion.Build})
-                 Developer: JustChickNugget (2025)
-                 - Take notes about your Minecraft worlds.
-                 
-                 Please report any bugs.
-                 """,
-                "Application Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            AboutWindow aboutWindow = new();
+            aboutWindow.ShowDialog();
         }
         catch (Exception ex)
         {
@@ -336,7 +326,7 @@ public partial class MainWindow
         {
             using HttpClient client = new();
             client.DefaultRequestHeaders.Add("User-Agent", "MinecraftNotes");
-
+            
             string response = await client.GetStringAsync
                 ("https://api.github.com/repos/JustChickNugget/MinecraftNotes/releases/latest");
 
@@ -352,7 +342,7 @@ public partial class MainWindow
                 {
                     Process.Start(new ProcessStartInfo
                     {
-                        FileName = "https://github.com/JustChickNugget/MinecraftNotes/releases/latest",
+                        FileName = Variables.RepositoryLink,
                         UseShellExecute = true
                     });
                 }

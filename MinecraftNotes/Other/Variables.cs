@@ -5,7 +5,9 @@ namespace MinecraftNotes.Other;
 
 internal static class Variables
 {
-    internal static string SavePath { get; } = $@"C:\Users\{Environment.UserName}\AppData\Local\JustChickNugget\MinecraftNotes.json";
+    private static string DeveloperLink => "https://github.com/JustChickNugget";
+    internal static string RepositoryLink => $"{DeveloperLink}/MinecraftNotes";
+    internal static string SavePath => $@"C:\Users\{Environment.UserName}\AppData\Local\JustChickNugget\MinecraftNotes.json";
 
     internal static ProcessStartInfo SavePathProcessStartInfo { get; } = new()
     {
@@ -15,7 +17,7 @@ internal static class Variables
     
     internal static ProcessStartInfo DeveloperGitHubProcessStartInfo { get; } = new()
     {
-        FileName = "https://github.com/JustChickNugget",
+        FileName = DeveloperLink,
         UseShellExecute = true
     };
 }
