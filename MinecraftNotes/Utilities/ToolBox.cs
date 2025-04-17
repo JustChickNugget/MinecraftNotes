@@ -7,11 +7,13 @@ public static class ToolBox
     public static void PrintException(Exception ex)
     {
         // Print exception if it has occurred.
+
+        string title = $"An exception has occurred ({ex.GetType().FullName})";
         
 #if DEBUG
-        MessageBox.Show(ex.ToString(), $"An exception has occurred ({ex.GetType().FullName})", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(ex.ToString(), title, MessageBoxButton.OK, MessageBoxImage.Error);
 #else
-        MessageBox.Show(ex.Message, $"An exception has occurred ({ex.GetType().FullName})", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(ex.Message, title, MessageBoxButton.OK, MessageBoxImage.Error);
 #endif
     }
 }
