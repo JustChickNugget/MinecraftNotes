@@ -271,13 +271,7 @@ public partial class MainWindow
             PlaceListView.Items.Clear();
 
             foreach (WorldPlace worldPlace in Worlds[selectedItem])
-            {
-                PlaceListView.Items.Add(new WorldPlace
-                {
-                    Name = worldPlace.Name,
-                    Location = worldPlace.Location
-                });
-            }
+                PlaceListView.Items.Add(worldPlace);
         }
         catch (Exception ex)
         {
