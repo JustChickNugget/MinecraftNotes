@@ -1,5 +1,15 @@
 ﻿# Changelog
 
+## 1.1.1 - 2025-07-27
+
+### Added
+
+- Added "Extract" function to insert data into text boxes.
+
+### Changes
+
+- Updated "About" window.
+
 ## 1.1.0 - 2025-03-22
 
 ### Added
