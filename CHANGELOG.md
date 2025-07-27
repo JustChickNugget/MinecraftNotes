@@ -9,6 +9,7 @@
 ### Changes
 
 - Updated "About" window.
+- Updated icon.
 
 ## 1.1.0 - 2025-03-22
 
