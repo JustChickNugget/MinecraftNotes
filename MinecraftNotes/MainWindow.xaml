@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Minecraft Notes" Height="550" Width="750" MinHeight="550" MinWidth="750"
-        WindowStartupLocation="CenterScreen" Loaded="Window_OnLoaded" KeyDown="Window_OnKeyDown">
+        Title="Minecraft Notes"
+        Height="550"
+        Width="750"
+        MinHeight="550"
+        MinWidth="750"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_OnLoaded"
+        KeyDown="Window_OnKeyDown">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -14,35 +20,60 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <Menu Grid.Row="0" Background="White">
+        <Menu Grid.Row="0"
+              Background="White">
             <MenuItem Header="View">
-                <MenuItem Header="Save directory" Click="ViewSaveDirectoryMenuItem_Click" />
+                <MenuItem
+                    Header="Save directory"
+                    Click="ViewSaveDirectoryMenuItem_Click" />
             </MenuItem>
+            
             <MenuItem Header="Help">
                 <MenuItem Header="Application">
-                    <MenuItem Header="About" Click="ApplicationAboutMenuItem_Click" />
-                    <MenuItem Header="Check for updates" Click="ApplicationCheckForUpdatesMenuItem_Click" />
+                    <MenuItem
+                        Header="About"
+                        Click="ApplicationAboutMenuItem_Click" />
+                    <MenuItem
+                        Header="Check for updates"
+                        Click="ApplicationCheckForUpdatesMenuItem_Click" />
                 </MenuItem>
+                
                 <MenuItem Header="Developer">
-                    <MenuItem Header="GitHub" Click="DeveloperGitHubMenuItem_Click" />
+                    <MenuItem
+                        Header="GitHub"
+                        Click="DeveloperGitHubMenuItem_Click" />
                 </MenuItem>
             </MenuItem>
         </Menu>
         
-        <GroupBox Grid.Row="1" Header="Information" Margin="15">
+        <GroupBox Grid.Row="1"
+                  Header="Information"
+                  Margin="15">
             <StackPanel>
                 <StackPanel>
-                    <Label Margin="15 5 15 0" Content="World's name:" />
-                    <TextBox x:Name="WorldNameTextBox" Margin="15 0" />
+                    <Label
+                        Margin="15 5 15 0"
+                        Content="World's name:" />
+                    
+                    <TextBox
+                        x:Name="WorldNameTextBox"
+                        Margin="15 0" />
                 </StackPanel>
             
                 <StackPanel>
-                    <Label Margin="15 5 15 0" Content="World's place name:" />
-                    <TextBox x:Name="PlaceNameTextBox" Margin="15 0" />
+                    <Label
+                        Margin="15 5 15 0"
+                        Content="World's place name:" />
+                    
+                    <TextBox
+                        x:Name="PlaceNameTextBox"
+                        Margin="15 0" />
                 </StackPanel>
             
                 <StackPanel>
-                    <Label Margin="15 5 15 0" Content="World's place location (X, Y, Z):" />
+                    <Label
+                        Margin="15 5 15 0"
+                        Content="World's place location (X, Y, Z):" />
                     
                     <Grid Margin="15 0">
                         <Grid.ColumnDefinitions>
@@ -51,13 +82,27 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         
-                        <TextBox x:Name="PlaceLocationXTextBox" Grid.Column="0" Margin="0 0 10 0" />
-                        <TextBox x:Name="PlaceLocationYTextBox" Grid.Column="1" Margin="5 0" />
-                        <TextBox x:Name="PlaceLocationZTextBox" Grid.Column="2" Margin="10 0 0 0" />
+                        <TextBox
+                            x:Name="PlaceLocationXTextBox"
+                            Grid.Column="0"
+                            Margin="0 0 10 0" />
+                        
+                        <TextBox
+                            x:Name="PlaceLocationYTextBox"
+                            Grid.Column="1"
+                            Margin="5 0" />
+                        
+                        <TextBox
+                            x:Name="PlaceLocationZTextBox"
+                            Grid.Column="2"
+                            Margin="10 0 0 0" />
                     </Grid>
                 </StackPanel>
                 
-                <Button Margin="15 15 15 15" Content="Add" Click="WorldAddButton_Click" />
+                <Button
+                    Margin="15 15 15 15"
+                    Content="Add"
+                    Click="WorldAddButton_Click" />
             </StackPanel>
         </GroupBox>
         
@@ -67,37 +112,76 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <ListBox x:Name="WorldListBox" Grid.Column="0" Margin="15 0 5 15" Width="275" SelectionMode="Extended"
+            <ListBox x:Name="WorldListBox"
+                     Grid.Column="0" Margin="15 0 5 15"
+                     Width="275"
+                     SelectionMode="Extended"
                      SelectionChanged="WorldsListBox_SelectionChanged">
                 <ListBox.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Refresh" Click="RefreshMenuItem_Click" />
-                        <MenuItem Header="Extract" Click="WorldExtractMenuItem_Click" />
+                        <MenuItem
+                            Header="Refresh"
+                            Click="RefreshMenuItem_Click" />
+                        
+                        <MenuItem
+                            Header="Extract"
+                            Click="WorldExtractMenuItem_Click" />
+                        
                         <Separator />
-                        <MenuItem Header="Edit" Click="WorldEditMenuItem_Click" />
-                        <MenuItem Header="Delete" Click="WorldDeleteMenuItem_Click" />
+                        
+                        <MenuItem
+                            Header="Edit"
+                            Click="WorldEditMenuItem_Click" />
+                        
+                        <MenuItem
+                            Header="Delete"
+                            Click="WorldDeleteMenuItem_Click" />
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>
             
-            <ListView x:Name="PlaceListView" Grid.Column="1" Margin="5 0 15 15">
+            <ListView x:Name="PlaceListView"
+                      Grid.Column="1"
+                      Margin="5 0 15 15">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="200" Header="Place name" DisplayMemberBinding="{Binding Path=Name}" />
-                        <GridViewColumn Width="200" Header="Location" DisplayMemberBinding="{Binding Path=Location}" />
+                        <GridViewColumn
+                            Width="200"
+                            Header="Place name"
+                            DisplayMemberBinding="{Binding Path=Name}" />
+                        
+                        <GridViewColumn
+                            Width="200"
+                            Header="Location"
+                            DisplayMemberBinding="{Binding Path=Location}" />
                     </GridView>
                 </ListView.View>
                 
                 <ListView.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Refresh" Click="RefreshMenuItem_Click" />
+                        <MenuItem
+                            Header="Refresh"
+                            Click="RefreshMenuItem_Click" />
+                        
                         <MenuItem Header="Extract">
-                            <MenuItem Header="With world name" Click="PlaceExtractWithWorldNameMenuItem_Click" />
-                            <MenuItem Header="Without world name" Click="PlaceExtractWithoutWorldNameMenuItem_Click" />
+                            <MenuItem
+                                Header="With world name"
+                                Click="PlaceExtractWithWorldNameMenuItem_Click" />
+                            
+                            <MenuItem
+                                Header="Without world name"
+                                Click="PlaceExtractWithoutWorldNameMenuItem_Click" />
                         </MenuItem>
+                        
                         <Separator />
-                        <MenuItem Header="Edit" Click="PlaceEditMenuItem_Click" />
-                        <MenuItem Header="Delete" Click="PlaceDeleteMenuItem_Click" />
+                        
+                        <MenuItem
+                            Header="Edit"
+                            Click="PlaceEditMenuItem_Click" />
+                        
+                        <MenuItem
+                            Header="Delete"
+                            Click="PlaceDeleteMenuItem_Click" />
                     </ContextMenu>
                 </ListView.ContextMenu>
             </ListView>

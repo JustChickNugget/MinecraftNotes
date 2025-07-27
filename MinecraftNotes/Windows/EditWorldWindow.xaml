@@ -4,15 +4,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Title="Minecraft Notes: Edit world" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" SnapsToDevicePixels="True" KeyDown="Window_OnKeyDown">
+        Title="Minecraft Notes: Edit world"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        SnapsToDevicePixels="True"
+        KeyDown="Window_OnKeyDown">
     
     <StackPanel Margin="15 10">
         <StackPanel>
             <Label Content="New world name:" />
-            <TextBox x:Name="NewWorldNameTextBox" MinWidth="250" />
+            
+            <TextBox
+                x:Name="NewWorldNameTextBox"
+                MinWidth="250" />
         </StackPanel>
         
-        <Button Content="Save" Margin="0 10 0 5" Width="100" HorizontalAlignment="Right" Click="SaveButton_Click" />
+        <Button
+            Content="Save"
+            Margin="0 10 0 5"
+            Width="100"
+            HorizontalAlignment="Right" Click="SaveButton_Click" />
     </StackPanel>
 </Window>
