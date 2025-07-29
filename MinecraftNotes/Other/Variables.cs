@@ -3,6 +3,9 @@ using System.IO;
 
 namespace MinecraftNotes.Other;
 
+/// <summary>
+/// A static class that contains public variables for access throughout the application.
+/// </summary>
 internal static class Variables
 {
     private static string DeveloperLink => "https://github.com/JustChickNugget";

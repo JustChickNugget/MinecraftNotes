@@ -7,6 +7,9 @@ using System.Windows.Navigation;
 
 namespace MinecraftNotes.Windows;
 
+/// <summary>
+/// A window containing information about the application.
+/// </summary>
 public partial class AboutWindow
 {
     public AboutWindow()
@@ -14,8 +17,11 @@ public partial class AboutWindow
         InitializeComponent();
     }
     
-    // Main events
+    #region MAIN EVENTS
     
+    /// <summary>
+    /// Hyperlink, that opens repository's page in the browser.
+    /// </summary>
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
         try
@@ -31,8 +37,13 @@ public partial class AboutWindow
         }
     }
     
-    // Other events
+    #endregion
     
+    #region WINDOW EVENTS
+    
+    /// <summary>
+    /// Gets application's version from the assembly and sets the repository link to the hyperlink.
+    /// </summary>
     private void Window_OnLoaded(object sender, RoutedEventArgs e)
     {
         try
@@ -48,4 +59,6 @@ public partial class AboutWindow
             ToolBox.PrintException(ex);
         }
     }
+    
+    #endregion
 }

@@ -14,6 +14,9 @@ using System.Windows.Input;
 
 namespace MinecraftNotes;
 
+/// <summary>
+/// A window containing the main logic for the application.
+/// </summary>
 public partial class MainWindow
 {
     private Dictionary<string, List<WorldPlace>>? Worlds { get; set; }
@@ -23,10 +26,13 @@ public partial class MainWindow
         InitializeComponent();
     }
 
+    #region MAIN EVENTS
+    
+    /// <summary>
+    /// Add world to the JSON file using data from the inputs.
+    /// </summary>
     private void WorldAddButton_Click(object sender, RoutedEventArgs e)
     {
-        // Add world to the JSON file using data from the inputs.
-
         try
         {
             string worldName = WorldNameTextBox.Text.Trim();
@@ -64,11 +70,44 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
+    
+    /// <summary>
+    /// If the user has selected a different world in the list, we update the places list view to display all saved
+    /// places of the selected world object.
+    /// </summary>
+    private void WorldsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        try
+        {
+            string selectedItem = (string)WorldListBox.SelectedItem;
 
+            if (string.IsNullOrEmpty(selectedItem))
+            {
+                PlaceListView.Items.Clear();
+                return;
+            }
+
+            if (Worlds == null)
+                return;
+
+            PlaceListView.Items.Clear();
+
+            foreach (WorldPlace worldPlace in Worlds[selectedItem])
+                PlaceListView.Items.Add(worldPlace);
+        }
+        catch (Exception ex)
+        {
+            ToolBox.PrintException(ex);
+        }
+    }
+
+    #region CONTEXT MENU EVENTS
+    
+    /// <summary>
+    /// Refresh data from the JSON file.
+    /// </summary>
     private void RefreshMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Refresh worlds data from the JSON file.
-
         try
         {
             Worlds = JsonUtilities.LoadWorldData();
@@ -91,6 +130,11 @@ public partial class MainWindow
         }
     }
 
+    #region WORLD
+    
+    /// <summary>
+    /// Extract selected world's name to the text box.
+    /// </summary>
     private void WorldExtractMenuItem_Click(object sender, RoutedEventArgs e)
     {
         try
@@ -107,10 +151,11 @@ public partial class MainWindow
         }
     }
     
+    /// <summary>
+    /// Show edit window for worlds.
+    /// </summary>
     private void WorldEditMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Launch edit window for worlds.
-        
         try
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0)
@@ -129,10 +174,11 @@ public partial class MainWindow
         }
     }
     
+    /// <summary>
+    /// Delete world and save JSON file.
+    /// </summary>
     private void WorldDeleteMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Delete world from the JSON file.
-
         try
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0)
@@ -153,6 +199,13 @@ public partial class MainWindow
         }
     }
 
+    #endregion
+    
+    #region PLACES
+    
+    /// <summary>
+    /// Extract the selected world name, place name and its location into text fields.
+    /// </summary>
     private void PlaceExtractWithWorldNameMenuItem_Click(object sender, RoutedEventArgs e)
     {
         try
@@ -175,6 +228,9 @@ public partial class MainWindow
         }
     }
     
+    /// <summary>
+    /// Extract place name and location into text boxes (without selected world name).
+    /// </summary>
     private void PlaceExtractWithoutWorldNameMenuItem_Click(object sender, RoutedEventArgs e)
     {
         try
@@ -195,10 +251,11 @@ public partial class MainWindow
         }
     }
     
+    /// <summary>
+    /// Show edit window for places.
+    /// </summary>
     private void PlaceEditMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Launch edit window for places.
-        
         try
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0 || PlaceListView.SelectedItems.Count <= 0)
@@ -218,10 +275,11 @@ public partial class MainWindow
         }
     }
     
+    /// <summary>
+    /// Delete place from the selected world object and save JSON file.
+    /// </summary>
     private void PlaceDeleteMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Delete place from the world object in the JSON file.
-
         try
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0 || PlaceListView.SelectedItems.Count <= 0)
@@ -247,42 +305,18 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
+    
+    #endregion
+    
+    #endregion
 
-    private void WorldsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        /*
-         * If user selected other world in the list box, we update the place list view to print
-         * all the places of the selected world.
-         */
-
-        try
-        {
-            string selectedItem = (string)WorldListBox.SelectedItem;
-
-            if (string.IsNullOrEmpty(selectedItem))
-            {
-                PlaceListView.Items.Clear();
-                return;
-            }
-
-            if (Worlds == null)
-                return;
-
-            PlaceListView.Items.Clear();
-
-            foreach (WorldPlace worldPlace in Worlds[selectedItem])
-                PlaceListView.Items.Add(worldPlace);
-        }
-        catch (Exception ex)
-        {
-            ToolBox.PrintException(ex);
-        }
-    }
-
+    #region MENU EVENTS
+    
+    /// <summary>
+    /// Open directory that contains JSON file.
+    /// </summary>
     private void ViewSaveDirectoryMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Open directory that contains JSON save file.
-
         try
         {
             if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
@@ -299,10 +333,11 @@ public partial class MainWindow
         }
     }
 
+    /// <summary>
+    /// Show window with the information about the application.
+    /// </summary>
     private void ApplicationAboutMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Shows information about the application.
-
         try
         {
             AboutWindow aboutWindow = new();
@@ -314,10 +349,11 @@ public partial class MainWindow
         }
     }
 
+    /// <summary>
+    /// Check for updates using GitHub's API.
+    /// </summary>
     private async void ApplicationCheckForUpdatesMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Check for updates using GitHub's API.
-        
         try
         {
             using HttpClient client = new();
@@ -355,10 +391,11 @@ public partial class MainWindow
         }
     }
 
+    /// <summary>
+    /// Open developer's GitHub page.
+    /// </summary>
     private void DeveloperGitHubMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        // Open developer's GitHub profile page.
-
         try
         {
             Process.Start(Variables.DeveloperGitHubProcessStartInfo);
@@ -368,13 +405,18 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
+    
+    #endregion
+    
+    #endregion
+    
+    #region WINDOW EVENTS
 
-    // Other events
-
+    /// <summary>
+    /// Get data from the JSON on window load.
+    /// </summary>
     private void Window_OnLoaded(object sender, RoutedEventArgs e)
     {
-        // Get JSON data on application load.
-
         try
         {
             RefreshMenuItem_Click(this, new RoutedEventArgs());
@@ -385,10 +427,11 @@ public partial class MainWindow
         }
     }
 
+    /// <summary>
+    /// Handle user's input. If the user presses 'Enter', the button will be pressed that adds world to the JSON file.
+    /// </summary>
     private void Window_OnKeyDown(object sender, KeyEventArgs e)
     {
-        // If user clicks enter, then the button that adds world to the JSON file will be clicked.
-
         try
         {
             if (e.Key != Key.Enter)
@@ -402,4 +445,6 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
+    
+    #endregion
 }

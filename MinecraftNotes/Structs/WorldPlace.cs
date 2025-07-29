@@ -1,9 +1,10 @@
 ﻿namespace MinecraftNotes.Structs;
 
+/// <summary>
+/// Contains information about the place in the world such as name and location.
+/// </summary>
 public readonly record struct WorldPlace
 {
-    // World's place has a name and a location.
-    
     public required string Name { get; init; }
     public required Location Location { get; init; }
 }

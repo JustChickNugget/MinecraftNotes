@@ -5,6 +5,9 @@ using System.Windows.Input;
 
 namespace MinecraftNotes.Windows;
 
+/// <summary>
+/// A window that allows the user to edit information about the place.
+/// </summary>
 public partial class EditPlaceWindow
 {
     private Dictionary<string, List<WorldPlace>>? Worlds { get; }
@@ -25,12 +28,13 @@ public partial class EditPlaceWindow
         NewPlaceLocationZTextBox.Text = currentWorldPlace.Location.Z.ToString();
     }
 
-    // Main events
+    #region MAIN EVENTS
     
+    /// <summary>
+    /// Save changes to the place and close the window.
+    /// </summary>
     private void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-        // Edit chosen place.
-        
         try
         {
             string newPlaceName = NewPlaceNameTextBox.Text.Trim();
@@ -78,12 +82,15 @@ public partial class EditPlaceWindow
         }
     }
     
-    // Other events
+    #endregion
+    
+    #region WINDOW EVENTS
 
+    /// <summary>
+    /// Handle user's input. If the user presses 'Enter', the button will be pressed that saves edits to the JSON file.
+    /// </summary>
     private void Window_OnKeyDown(object sender, KeyEventArgs e)
     {
-        // If user clicks enter, then the button that edits chosen place will be clicked.
-
         try
         {
             if (e.Key != Key.Enter)
@@ -97,4 +104,6 @@ public partial class EditPlaceWindow
             ToolBox.PrintException(ex);
         }
     }
+    
+    #endregion
 }

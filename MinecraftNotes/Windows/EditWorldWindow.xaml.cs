@@ -5,6 +5,9 @@ using System.Windows.Input;
 
 namespace MinecraftNotes.Windows;
 
+/// <summary>
+/// A window that allows the user to edit information about the world.
+/// </summary>
 public partial class EditWorldWindow
 {
     private Dictionary<string, List<WorldPlace>>? Worlds { get; }
@@ -20,12 +23,13 @@ public partial class EditWorldWindow
         NewWorldNameTextBox.Text = currentWorldName;
     }
 
-    // Main events
+    #region MAIN EVENTS
     
+    /// <summary>
+    /// Save changes to the world and close the window.
+    /// </summary>
     private void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-        // Edit chosen world.
-        
         try
         {
             string newWorldName = NewWorldNameTextBox.Text.Trim();
@@ -57,12 +61,15 @@ public partial class EditWorldWindow
         }
     }
     
-    // Other events
+    #endregion
     
+    #region WINDOW EVENTS
+    
+    /// <summary>
+    /// Handle user's input. If the user presses 'Enter', the button will be pressed that saves edits to the JSON file.
+    /// </summary>
     private void Window_OnKeyDown(object sender, KeyEventArgs e)
     {
-        // If user clicks enter, then the button that edits chosen world will be clicked.
-
         try
         {
             if (e.Key != Key.Enter)
@@ -76,4 +83,6 @@ public partial class EditWorldWindow
             ToolBox.PrintException(ex);
         }
     }
+    
+    #endregion
 }
