@@ -6,19 +6,19 @@ namespace MinecraftNotes.Other;
 /// <summary>
 /// A static class that contains public variables for access throughout the application.
 /// </summary>
-internal static class Variables
+public static class Variables
 {
     private static string DeveloperLink => "https://github.com/JustChickNugget";
-    internal static string RepositoryLink => $"{DeveloperLink}/MinecraftNotes";
-    internal static string SavePath => $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\JustChickNugget\MinecraftNotes.json";
+    public static string RepositoryLink => $"{DeveloperLink}/MinecraftNotes";
+    public static string SavePath => $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\JustChickNugget\MinecraftNotes.json";
 
-    internal static ProcessStartInfo SavePathProcessStartInfo { get; } = new()
+    public static ProcessStartInfo SavePathProcessStartInfo { get; } = new()
     {
         FileName = Path.GetDirectoryName(SavePath),
         UseShellExecute = true
     };
     
-    internal static ProcessStartInfo DeveloperGitHubProcessStartInfo { get; } = new()
+    public static ProcessStartInfo DeveloperGitHubProcessStartInfo { get; } = new()
     {
         FileName = DeveloperLink,
         UseShellExecute = true
