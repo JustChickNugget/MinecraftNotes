@@ -316,6 +316,8 @@ public partial class MainWindow
 
     private async void ApplicationCheckForUpdatesMenuItem_Click(object sender, RoutedEventArgs e)
     {
+        // Check for updates using GitHub's API.
+        
         try
         {
             using HttpClient client = new();
