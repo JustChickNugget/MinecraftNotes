@@ -343,7 +343,7 @@ public partial class MainWindow
             }
             else
             {
-                MessageBox.Show("Current version is up to date.", "Update Checker",
+                MessageBox.Show("Current version is up to date.", "Update checker",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
