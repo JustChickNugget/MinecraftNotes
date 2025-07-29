@@ -35,8 +35,9 @@ public static class JsonUtilities
     {
         if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Variables.SavePath)
-                                      ?? throw new InvalidOperationException("Directory path is null or empty."));
+            Directory.CreateDirectory(
+                Path.GetDirectoryName(Variables.SavePath) 
+                ?? throw new InvalidOperationException("Directory path is null or empty."));
         }
 
         Dictionary<string, List<WorldPlace>> worlds;
@@ -79,16 +80,18 @@ public static class JsonUtilities
     {
         if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Variables.SavePath)
-                                      ?? throw new InvalidOperationException("Directory path is null or empty."));
+            Directory.CreateDirectory(
+                Path.GetDirectoryName(Variables.SavePath)
+                ?? throw new InvalidOperationException("Directory path is null or empty."));
         }
 
         if (!File.Exists(Variables.SavePath))
             return new Dictionary<string, List<WorldPlace>>();
 
-        Dictionary<string, List<WorldPlace>> worlds = JsonSerializer.Deserialize<Dictionary<string, List<WorldPlace>>>
-                                                          (File.ReadAllText(Variables.SavePath), SerializerOptions)
-                                                      ?? throw new InvalidOperationException();
+        Dictionary<string, List<WorldPlace>> worlds =
+            JsonSerializer.Deserialize<Dictionary<string, List<WorldPlace>>>
+                (File.ReadAllText(Variables.SavePath), SerializerOptions) 
+            ?? throw new InvalidOperationException();
 
         return worlds;
     }
