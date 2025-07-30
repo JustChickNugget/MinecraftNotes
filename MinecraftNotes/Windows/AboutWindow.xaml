@@ -32,7 +32,7 @@
         
         <Label Padding="0">
             <Hyperlink x:Name="RepositoryHyperlink"
-                       RequestNavigate="Hyperlink_RequestNavigate">
+                       RequestNavigate="RepositoryHyperlink_RequestNavigate">
                 Repository
             </Hyperlink>
         </Label>
