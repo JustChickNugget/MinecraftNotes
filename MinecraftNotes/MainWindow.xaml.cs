@@ -321,8 +321,9 @@ public partial class MainWindow
         {
             if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(Variables.SavePath)
-                                          ?? throw new InvalidOperationException("Directory path is null or empty."));
+                Directory.CreateDirectory(
+                    Path.GetDirectoryName(Variables.SavePath) 
+                    ?? throw new InvalidOperationException("Directory path is null or empty."));
             }
 
             Process.Start(Variables.SavePathProcessStartInfo);

@@ -49,72 +49,61 @@
         
         <GroupBox Grid.Row="1"
                   Header="Information"
-                  Margin="15">
+                  Margin="15 15 15 5"
+                  Padding="15 10 15 15">
             <StackPanel>
                 <StackPanel>
-                    <Label
-                        Margin="15 5 15 0"
-                        Content="World's name:" />
-                    
-                    <TextBox
-                        x:Name="WorldNameTextBox"
-                        Margin="15 0" />
+                    <Label Content="World's name:" />
+                    <TextBox x:Name="WorldNameTextBox" />
                 </StackPanel>
             
-                <StackPanel>
-                    <Label
-                        Margin="15 5 15 0"
-                        Content="World's place name:" />
-                    
-                    <TextBox
-                        x:Name="PlaceNameTextBox"
-                        Margin="15 0" />
+                <StackPanel Margin="0 5 0 5">
+                    <Label Content="World's place name:" />
+                    <TextBox x:Name="PlaceNameTextBox" />
                 </StackPanel>
             
-                <StackPanel>
-                    <Label
-                        Margin="15 5 15 0"
-                        Content="World's place location (X, Y, Z):" />
+                <StackPanel Margin="0 0 0 15">
+                    <Label Content="World's place location (X, Y, Z):" />
                     
-                    <Grid Margin="15 0">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         
                         <TextBox
                             x:Name="PlaceLocationXTextBox"
-                            Grid.Column="0"
-                            Margin="0 0 10 0" />
+                            Grid.Column="0" />
                         
                         <TextBox
                             x:Name="PlaceLocationYTextBox"
-                            Grid.Column="1"
-                            Margin="5 0" />
+                            Grid.Column="2" />
                         
                         <TextBox
                             x:Name="PlaceLocationZTextBox"
-                            Grid.Column="2"
-                            Margin="10 0 0 0" />
+                            Grid.Column="4" />
                     </Grid>
                 </StackPanel>
                 
                 <Button
-                    Margin="15 15 15 15"
                     Content="Add"
                     Click="WorldAddButton_Click" />
             </StackPanel>
         </GroupBox>
         
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2"
+              Margin="15 5 15 15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
             <ListBox x:Name="WorldListBox"
-                     Grid.Column="0" Margin="15 0 5 15"
+                     Grid.Column="0"
                      Width="275"
                      SelectionMode="Extended"
                      SelectionChanged="WorldsListBox_SelectionChanged">
@@ -142,8 +131,7 @@
             </ListBox>
             
             <ListView x:Name="PlaceListView"
-                      Grid.Column="1"
-                      Margin="5 0 15 15">
+                      Grid.Column="2">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn

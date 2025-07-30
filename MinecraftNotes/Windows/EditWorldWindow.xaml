@@ -11,8 +11,8 @@
         SnapsToDevicePixels="True"
         KeyDown="Window_OnKeyDown">
     
-    <StackPanel Margin="15 10">
-        <StackPanel>
+    <StackPanel Margin="15 10 15 15">
+        <StackPanel Margin="0 0 0 15">
             <Label Content="New world name:" />
             
             <TextBox
@@ -22,8 +22,8 @@
         
         <Button
             Content="Save"
-            Margin="0 10 0 5"
             Width="100"
-            HorizontalAlignment="Right" Click="SaveButton_Click" />
+            HorizontalAlignment="Right"
+            Click="SaveButton_Click" />
     </StackPanel>
 </Window>
