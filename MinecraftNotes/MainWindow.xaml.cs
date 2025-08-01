@@ -59,7 +59,7 @@ public partial class MainWindow
             };
 
             Worlds = JsonUtilities.AppendWorldData(worldName, worldPlace);
-            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(sender, e);
         }
         catch (Exception ex)
         {
@@ -162,7 +162,7 @@ public partial class MainWindow
             EditWorldWindow editWorldWindow = new(worldName);
             editWorldWindow.ShowDialog();
             
-            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(sender, e);
         }
         catch (Exception ex)
         {
@@ -187,7 +187,7 @@ public partial class MainWindow
             }
 
             JsonUtilities.SaveWorldData(Worlds);
-            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(sender, e);
         }
         catch (Exception ex)
         {
@@ -263,7 +263,7 @@ public partial class MainWindow
             EditPlaceWindow editPlaceWindow = new(worldName, worldPlace);
             editPlaceWindow.ShowDialog();
             
-            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(sender, e);
         }
         catch (Exception ex)
         {
@@ -294,7 +294,7 @@ public partial class MainWindow
             }
 
             JsonUtilities.SaveWorldData(Worlds);
-            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(sender, e);
         }
         catch (Exception ex)
         {
@@ -412,7 +412,7 @@ public partial class MainWindow
     {
         try
         {
-            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(sender, e);
         }
         catch (Exception ex)
         {
@@ -431,7 +431,7 @@ public partial class MainWindow
                 return;
 
             e.Handled = true;
-            WorldAddButton_OnClick(this, new RoutedEventArgs());
+            WorldAddButton_OnClick(sender, e);
         }
         catch (Exception ex)
         {

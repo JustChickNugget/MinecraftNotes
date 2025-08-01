@@ -97,7 +97,7 @@ public partial class EditPlaceWindow
                 return;
 
             e.Handled = true;
-            SaveButton_OnClick(this, new RoutedEventArgs());
+            SaveButton_OnClick(sender, e);
         }
         catch (Exception ex)
         {
