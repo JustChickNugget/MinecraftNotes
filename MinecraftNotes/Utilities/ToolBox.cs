@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 
 namespace MinecraftNotes.Utilities;
 
@@ -16,7 +17,10 @@ public static class ToolBox
         string title = $"An exception has occurred ({ex.GetType().FullName})";
         
 #if DEBUG
-        MessageBox.Show(ex.ToString(), title, MessageBoxButton.OK, MessageBoxImage.Error);
+        string exceptionString = ex.ToString();
+        
+        MessageBox.Show(exceptionString, title, MessageBoxButton.OK, MessageBoxImage.Error);
+        Debug.WriteLine(exceptionString);
 #else
         MessageBox.Show(ex.Message, title, MessageBoxButton.OK, MessageBoxImage.Error);
 #endif
