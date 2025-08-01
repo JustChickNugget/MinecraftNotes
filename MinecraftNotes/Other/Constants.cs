@@ -12,7 +12,10 @@ public static class Constants
 
     private static string DeveloperLink => "https://github.com/JustChickNugget";
     public static string RepositoryLink { get; } = $"{DeveloperLink}/MinecraftNotes";
-    
+
+    public static string ReleasesApiLink =>
+        "https://api.github.com/repos/JustChickNugget/MinecraftNotes/releases/latest";
+
     public static ProcessStartInfo SavePathProcessStartInfo { get; } = new()
     {
         FileName = Path.GetDirectoryName(SavePath),

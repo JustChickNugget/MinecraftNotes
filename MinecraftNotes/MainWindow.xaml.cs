@@ -1,13 +1,9 @@
 ﻿using MinecraftNotes.Windows;
 using MinecraftNotes.Utilities;
 using MinecraftNotes.Structs;
-using MinecraftNotes.Structs.API;
 using MinecraftNotes.Other;
 using System.Diagnostics;
 using System.IO;
-using System.Net.Http;
-using System.Reflection;
-using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -357,21 +353,17 @@ public partial class MainWindow
     {
         try
         {
-            using HttpClient client = new();
-            client.DefaultRequestHeaders.Add("User-Agent", "MinecraftNotes");
-            
-            string response = await client.GetStringAsync
-                ("https://api.github.com/repos/JustChickNugget/MinecraftNotes/releases/latest");
+            bool updatesAvailable = await ToolBox.CheckForUpdates();
 
-            GitHubApiResponse gitHubApiResponse = JsonSerializer.Deserialize<GitHubApiResponse>(response);
-
-            Version? currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-            Version latestReleaseVersion = Version.Parse(gitHubApiResponse.TagName + ".0");
-
-            if (latestReleaseVersion.CompareTo(currentVersion) >= 1)
+            if (updatesAvailable)
             {
-                if (MessageBox.Show("An update is available. Would you like to download the update?", "Update checker",
-                        MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                MessageBoxResult messageBoxResult = MessageBox.Show(
+                    "An update is available. Would you like to download the update?",
+                    "Update checker",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Information);
+                
+                if (messageBoxResult == MessageBoxResult.Yes)
                 {
                     Process.Start(new ProcessStartInfo
                     {
