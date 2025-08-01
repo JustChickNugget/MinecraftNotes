@@ -69,11 +69,11 @@ public partial class EditPlaceWindow
 
             int currentWorldPlaceIndex =
                 worldPlaces.FindIndex(findWorldPlace => findWorldPlace == CurrentWorldPlace);
+            
             worldPlaces[currentWorldPlaceIndex] = newWorldPlace;
-
             Worlds[CurrentWorldName] = worldPlaces;
+            
             JsonUtilities.SaveWorldData(Worlds);
-
             Close();
         }
         catch (Exception ex)
