@@ -52,7 +52,7 @@ public partial class AboutWindow
                                  ?? throw new InvalidOperationException("Application version is null.");
 
             VersionLabel.Content = $"v{appVersion.Major}.{appVersion.Minor}.{appVersion.Build}";
-            RepositoryHyperlink.NavigateUri = new Uri(Variables.RepositoryLink);
+            RepositoryHyperlink.NavigateUri = new Uri(Constants.RepositoryLink);
         }
         catch (Exception ex)
         {

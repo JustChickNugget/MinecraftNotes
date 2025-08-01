@@ -22,7 +22,7 @@ public static class JsonUtilities
     public static void SaveWorldData(Dictionary<string, List<WorldPlace>> worlds)
     {
         string json = JsonSerializer.Serialize(worlds, SerializerOptions);
-        File.WriteAllText(Variables.SavePath, json);
+        File.WriteAllText(Constants.SavePath, json);
     }
     
     /// <summary>
@@ -33,19 +33,19 @@ public static class JsonUtilities
     /// <returns>Updated dictionary of worlds with information just added.</returns>
     public static Dictionary<string, List<WorldPlace>> AppendWorldData(string worldName, WorldPlace worldPlace)
     {
-        if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
+        if (!Directory.Exists(Path.GetDirectoryName(Constants.SavePath)))
         {
             Directory.CreateDirectory(
-                Path.GetDirectoryName(Variables.SavePath) 
+                Path.GetDirectoryName(Constants.SavePath) 
                 ?? throw new InvalidOperationException("Directory path is null or empty."));
         }
 
         Dictionary<string, List<WorldPlace>> worlds;
         
-        if (File.Exists(Variables.SavePath))
+        if (File.Exists(Constants.SavePath))
         {
             worlds = JsonSerializer.Deserialize<Dictionary<string, List<WorldPlace>>>
-                         (File.ReadAllText(Variables.SavePath), SerializerOptions)
+                         (File.ReadAllText(Constants.SavePath), SerializerOptions)
                      ?? new Dictionary<string, List<WorldPlace>>();
 
             if (worlds.TryGetValue(worldName, out List<WorldPlace>? worldPlaces))
@@ -67,7 +67,7 @@ public static class JsonUtilities
         }
         
         string json = JsonSerializer.Serialize(worlds, SerializerOptions);
-        File.WriteAllText(Variables.SavePath, json);
+        File.WriteAllText(Constants.SavePath, json);
 
         return worlds;
     }
@@ -78,19 +78,19 @@ public static class JsonUtilities
     /// <returns>Loaded data about worlds as a dictionary.</returns>
     public static Dictionary<string, List<WorldPlace>> LoadWorldData()
     {
-        if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
+        if (!Directory.Exists(Path.GetDirectoryName(Constants.SavePath)))
         {
             Directory.CreateDirectory(
-                Path.GetDirectoryName(Variables.SavePath)
+                Path.GetDirectoryName(Constants.SavePath)
                 ?? throw new InvalidOperationException("Directory path is null or empty."));
         }
 
-        if (!File.Exists(Variables.SavePath))
+        if (!File.Exists(Constants.SavePath))
             return new Dictionary<string, List<WorldPlace>>();
 
         Dictionary<string, List<WorldPlace>> worlds =
             JsonSerializer.Deserialize<Dictionary<string, List<WorldPlace>>>
-                (File.ReadAllText(Variables.SavePath), SerializerOptions) 
+                (File.ReadAllText(Constants.SavePath), SerializerOptions) 
             ?? throw new InvalidOperationException();
 
         return worlds;

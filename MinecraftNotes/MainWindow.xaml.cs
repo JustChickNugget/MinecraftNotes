@@ -319,14 +319,14 @@ public partial class MainWindow
     {
         try
         {
-            if (!Directory.Exists(Path.GetDirectoryName(Variables.SavePath)))
+            if (!Directory.Exists(Path.GetDirectoryName(Constants.SavePath)))
             {
                 Directory.CreateDirectory(
-                    Path.GetDirectoryName(Variables.SavePath) 
+                    Path.GetDirectoryName(Constants.SavePath) 
                     ?? throw new InvalidOperationException("Directory path is null or empty."));
             }
 
-            Process.Start(Variables.SavePathProcessStartInfo);
+            Process.Start(Constants.SavePathProcessStartInfo);
         }
         catch (Exception ex)
         {
@@ -375,7 +375,7 @@ public partial class MainWindow
                 {
                     Process.Start(new ProcessStartInfo
                     {
-                        FileName = Variables.RepositoryLink,
+                        FileName = Constants.RepositoryLink,
                         UseShellExecute = true
                     });
                 }
@@ -399,7 +399,7 @@ public partial class MainWindow
     {
         try
         {
-            Process.Start(Variables.DeveloperGitHubProcessStartInfo);
+            Process.Start(Constants.DeveloperGitHubProcessStartInfo);
         }
         catch (Exception ex)
         {
