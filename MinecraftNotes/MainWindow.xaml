@@ -131,7 +131,7 @@
             
             <GridSplitter
                 Grid.Column="1"
-                Width="3"
+                Width="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Stretch" />
             
