@@ -25,24 +25,24 @@
             <MenuItem Header="View">
                 <MenuItem
                     Header="Save directory"
-                    Click="ViewSaveDirectoryMenuItem_Click" />
+                    Click="ViewSaveDirectoryMenuItem_OnClick" />
             </MenuItem>
             
             <MenuItem Header="Help">
                 <MenuItem Header="Application">
                     <MenuItem
                         Header="About"
-                        Click="ApplicationAboutMenuItem_Click" />
+                        Click="ApplicationAboutMenuItem_OnClick" />
                     
                     <MenuItem
                         Header="Check for updates"
-                        Click="ApplicationCheckForUpdatesMenuItem_Click" />
+                        Click="ApplicationCheckForUpdatesMenuItem_OnClick" />
                 </MenuItem>
                 
                 <MenuItem Header="Developer">
                     <MenuItem
                         Header="GitHub"
-                        Click="DeveloperGitHubMenuItem_Click" />
+                        Click="DeveloperGitHubMenuItem_OnClick" />
                 </MenuItem>
             </MenuItem>
         </Menu>
@@ -90,7 +90,7 @@
                 
                 <Button
                     Content="Add"
-                    Click="WorldAddButton_Click" />
+                    Click="WorldAddButton_OnClick" />
             </StackPanel>
         </GroupBox>
         
@@ -105,26 +105,26 @@
             <ListBox x:Name="WorldListBox"
                      Grid.Column="0"
                      SelectionMode="Extended"
-                     SelectionChanged="WorldsListBox_SelectionChanged">
+                     SelectionChanged="WorldsListBox_OnSelectionChanged">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem
                             Header="Refresh"
-                            Click="RefreshMenuItem_Click" />
+                            Click="RefreshMenuItem_OnClick" />
                         
                         <MenuItem
                             Header="Extract"
-                            Click="WorldExtractMenuItem_Click" />
+                            Click="WorldExtractMenuItem_OnClick" />
                         
                         <Separator />
                         
                         <MenuItem
                             Header="Edit"
-                            Click="WorldEditMenuItem_Click" />
+                            Click="WorldEditMenuItem_OnClick" />
                         
                         <MenuItem
                             Header="Delete"
-                            Click="WorldDeleteMenuItem_Click" />
+                            Click="WorldDeleteMenuItem_OnClick" />
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>
@@ -155,27 +155,27 @@
                     <ContextMenu>
                         <MenuItem
                             Header="Refresh"
-                            Click="RefreshMenuItem_Click" />
+                            Click="RefreshMenuItem_OnClick" />
                         
                         <MenuItem Header="Extract">
                             <MenuItem
                                 Header="With world name"
-                                Click="PlaceExtractWithWorldNameMenuItem_Click" />
+                                Click="PlaceExtractWithWorldNameMenuItem_OnClick" />
                             
                             <MenuItem
                                 Header="Without world name"
-                                Click="PlaceExtractWithoutWorldNameMenuItem_Click" />
+                                Click="PlaceExtractWithoutWorldNameMenuItem_OnClick" />
                         </MenuItem>
                         
                         <Separator />
                         
                         <MenuItem
                             Header="Edit"
-                            Click="PlaceEditMenuItem_Click" />
+                            Click="PlaceEditMenuItem_OnClick" />
                         
                         <MenuItem
                             Header="Delete"
-                            Click="PlaceDeleteMenuItem_Click" />
+                            Click="PlaceDeleteMenuItem_OnClick" />
                     </ContextMenu>
                 </ListView.ContextMenu>
             </ListView>

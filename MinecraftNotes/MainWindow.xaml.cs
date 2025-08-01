@@ -27,7 +27,7 @@ public partial class MainWindow
     /// <summary>
     /// Add world to the JSON file using data from the inputs.
     /// </summary>
-    private void WorldAddButton_Click(object sender, RoutedEventArgs e)
+    private void WorldAddButton_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -59,7 +59,7 @@ public partial class MainWindow
             };
 
             Worlds = JsonUtilities.AppendWorldData(worldName, worldPlace);
-            RefreshMenuItem_Click(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
         }
         catch (Exception ex)
         {
@@ -71,7 +71,7 @@ public partial class MainWindow
     /// If the user has selected a different world in the list, we update the places list view to display all saved
     /// places of the selected world object.
     /// </summary>
-    private void WorldsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void WorldsListBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         try
         {
@@ -102,7 +102,7 @@ public partial class MainWindow
     /// <summary>
     /// Refresh data from the JSON file.
     /// </summary>
-    private void RefreshMenuItem_Click(object sender, RoutedEventArgs e)
+    private void RefreshMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -131,7 +131,7 @@ public partial class MainWindow
     /// <summary>
     /// Extract selected world's name to the text box.
     /// </summary>
-    private void WorldExtractMenuItem_Click(object sender, RoutedEventArgs e)
+    private void WorldExtractMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -150,7 +150,7 @@ public partial class MainWindow
     /// <summary>
     /// Show edit window for worlds.
     /// </summary>
-    private void WorldEditMenuItem_Click(object sender, RoutedEventArgs e)
+    private void WorldEditMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -162,7 +162,7 @@ public partial class MainWindow
             EditWorldWindow editWorldWindow = new(worldName);
             editWorldWindow.ShowDialog();
             
-            RefreshMenuItem_Click(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
         }
         catch (Exception ex)
         {
@@ -173,7 +173,7 @@ public partial class MainWindow
     /// <summary>
     /// Delete world and save JSON file.
     /// </summary>
-    private void WorldDeleteMenuItem_Click(object sender, RoutedEventArgs e)
+    private void WorldDeleteMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -187,7 +187,7 @@ public partial class MainWindow
             }
 
             JsonUtilities.SaveWorldData(Worlds);
-            RefreshMenuItem_Click(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
         }
         catch (Exception ex)
         {
@@ -202,7 +202,7 @@ public partial class MainWindow
     /// <summary>
     /// Extract the selected world name, place name and its location into text fields.
     /// </summary>
-    private void PlaceExtractWithWorldNameMenuItem_Click(object sender, RoutedEventArgs e)
+    private void PlaceExtractWithWorldNameMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -227,7 +227,7 @@ public partial class MainWindow
     /// <summary>
     /// Extract place name and location into text boxes (without selected world name).
     /// </summary>
-    private void PlaceExtractWithoutWorldNameMenuItem_Click(object sender, RoutedEventArgs e)
+    private void PlaceExtractWithoutWorldNameMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -250,7 +250,7 @@ public partial class MainWindow
     /// <summary>
     /// Show edit window for places.
     /// </summary>
-    private void PlaceEditMenuItem_Click(object sender, RoutedEventArgs e)
+    private void PlaceEditMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -263,7 +263,7 @@ public partial class MainWindow
             EditPlaceWindow editPlaceWindow = new(worldName, worldPlace);
             editPlaceWindow.ShowDialog();
             
-            RefreshMenuItem_Click(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
         }
         catch (Exception ex)
         {
@@ -274,7 +274,7 @@ public partial class MainWindow
     /// <summary>
     /// Delete place from the selected world object and save JSON file.
     /// </summary>
-    private void PlaceDeleteMenuItem_Click(object sender, RoutedEventArgs e)
+    private void PlaceDeleteMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -294,7 +294,7 @@ public partial class MainWindow
             }
 
             JsonUtilities.SaveWorldData(Worlds);
-            RefreshMenuItem_Click(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
         }
         catch (Exception ex)
         {
@@ -311,7 +311,7 @@ public partial class MainWindow
     /// <summary>
     /// Open directory that contains JSON file.
     /// </summary>
-    private void ViewSaveDirectoryMenuItem_Click(object sender, RoutedEventArgs e)
+    private void ViewSaveDirectoryMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -333,7 +333,7 @@ public partial class MainWindow
     /// <summary>
     /// Show window with the information about the application.
     /// </summary>
-    private void ApplicationAboutMenuItem_Click(object sender, RoutedEventArgs e)
+    private void ApplicationAboutMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -349,7 +349,7 @@ public partial class MainWindow
     /// <summary>
     /// Check for updates using GitHub's API.
     /// </summary>
-    private async void ApplicationCheckForUpdatesMenuItem_Click(object sender, RoutedEventArgs e)
+    private async void ApplicationCheckForUpdatesMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -387,7 +387,7 @@ public partial class MainWindow
     /// <summary>
     /// Open developer's GitHub page.
     /// </summary>
-    private void DeveloperGitHubMenuItem_Click(object sender, RoutedEventArgs e)
+    private void DeveloperGitHubMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -412,7 +412,7 @@ public partial class MainWindow
     {
         try
         {
-            RefreshMenuItem_Click(this, new RoutedEventArgs());
+            RefreshMenuItem_OnClick(this, new RoutedEventArgs());
         }
         catch (Exception ex)
         {
@@ -431,7 +431,7 @@ public partial class MainWindow
                 return;
 
             e.Handled = true;
-            WorldAddButton_Click(this, new RoutedEventArgs());
+            WorldAddButton_OnClick(this, new RoutedEventArgs());
         }
         catch (Exception ex)
         {

@@ -22,7 +22,7 @@ public partial class AboutWindow
     /// <summary>
     /// Hyperlink, that opens repository's page in the browser.
     /// </summary>
-    private void RepositoryHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+    private void RepositoryHyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
     {
         try
         {

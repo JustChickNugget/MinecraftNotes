@@ -33,7 +33,7 @@ public partial class EditPlaceWindow
     /// <summary>
     /// Save changes to the place and close the window.
     /// </summary>
-    private void SaveButton_Click(object sender, RoutedEventArgs e)
+    private void SaveButton_OnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -97,7 +97,7 @@ public partial class EditPlaceWindow
                 return;
 
             e.Handled = true;
-            SaveButton_Click(this, new RoutedEventArgs());
+            SaveButton_OnClick(this, new RoutedEventArgs());
         }
         catch (Exception ex)
         {

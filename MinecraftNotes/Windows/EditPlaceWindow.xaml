@@ -50,6 +50,6 @@
             Content="Save"
             Width="100"
             HorizontalAlignment="Right"
-            Click="SaveButton_Click" />
+            Click="SaveButton_OnClick" />
     </StackPanel>
 </Window>
