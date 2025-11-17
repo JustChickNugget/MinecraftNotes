@@ -1,9 +1,9 @@
-﻿using MinecraftNotes.Structs.API;
-using MinecraftNotes.Other;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Reflection;
 using System.Text.Json;
 using System.Windows;
+using MinecraftNotes.Other;
+using MinecraftNotes.Structs.API;
 
 #if DEBUG
 using System.Diagnostics;
@@ -24,29 +24,33 @@ public static class ToolBox
     {
         using HttpClient client = new();
         client.DefaultRequestHeaders.Add("User-Agent", "NuggetLib");
-        
+
         string response = await client.GetStringAsync(Constants.ReleasesApiLink, cancellationToken);
         GitHubApiResponse gitHubApiResponse = JsonSerializer.Deserialize<GitHubApiResponse>(response);
 
         if (gitHubApiResponse.TagName == null)
+        {
             throw new ArgumentNullException(null, "Couldn't check version: tag name is null.");
-            
+        }
+
         Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version ?? new Version(1, 0, 0, 0);
-            
+
         string latestReleaseVersionString = gitHubApiResponse.TagName.StartsWith('v')
             ? gitHubApiResponse.TagName[1..]
             : gitHubApiResponse.TagName;
-            
+
         latestReleaseVersionString = latestReleaseVersionString.Split('.').Length == 3
             ? latestReleaseVersionString + ".0"
             : latestReleaseVersionString;
-            
+
         if (!Version.TryParse(latestReleaseVersionString, out Version? latestReleaseVersion))
+        {
             throw new FormatException($"Invalid version format: {gitHubApiResponse.TagName}");
-            
+        }
+
         return latestReleaseVersion > currentVersion;
     }
-    
+
     /// <summary>
     /// Print exception if it has occurred.
     /// </summary>
@@ -54,10 +58,10 @@ public static class ToolBox
     public static void PrintException(Exception ex)
     {
         string title = $"An exception has occurred ({ex.GetType().FullName})";
-        
+
 #if DEBUG
         string exceptionString = ex.ToString();
-        
+
         MessageBox.Show(exceptionString, title, MessageBoxButton.OK, MessageBoxImage.Error);
         Debug.WriteLine(exceptionString);
 #else

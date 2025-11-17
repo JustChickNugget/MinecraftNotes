@@ -10,19 +10,19 @@
         ResizeMode="NoResize"
         SnapsToDevicePixels="True"
         KeyDown="Window_OnKeyDown">
-    
+
     <StackPanel Margin="15 10 15 15">
         <StackPanel>
             <Label Content="New place name:" />
-            
+
             <TextBox
                 x:Name="NewPlaceNameTextBox"
                 MinWidth="400" />
         </StackPanel>
-        
+
         <StackPanel Margin="0 5 0 15">
             <Label Content="New place location (X, Y, Z):" />
-            
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -31,21 +31,21 @@
                     <ColumnDefinition Width="15" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                        
+
                 <TextBox
                     x:Name="NewPlaceLocationXTextBox"
                     Grid.Column="0" />
-                
+
                 <TextBox
                     x:Name="NewPlaceLocationYTextBox"
                     Grid.Column="2" />
-                
+
                 <TextBox
                     x:Name="NewPlaceLocationZTextBox"
                     Grid.Column="4" />
             </Grid>
         </StackPanel>
-        
+
         <Button
             Content="Save"
             Width="100"

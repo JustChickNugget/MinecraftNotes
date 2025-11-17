@@ -10,16 +10,16 @@
         ResizeMode="NoResize"
         SnapsToDevicePixels="True"
         KeyDown="Window_OnKeyDown">
-    
+
     <StackPanel Margin="15 10 15 15">
         <StackPanel Margin="0 0 0 15">
             <Label Content="New world name:" />
-            
+
             <TextBox
                 x:Name="NewWorldNameTextBox"
                 MinWidth="250" />
         </StackPanel>
-        
+
         <Button
             Content="Save"
             Width="100"

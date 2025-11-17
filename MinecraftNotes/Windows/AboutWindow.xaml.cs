@@ -1,9 +1,9 @@
-﻿using MinecraftNotes.Utilities;
-using MinecraftNotes.Other;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Navigation;
+using MinecraftNotes.Other;
+using MinecraftNotes.Utilities;
 
 namespace MinecraftNotes.Windows;
 
@@ -16,9 +16,9 @@ public partial class AboutWindow
     {
         InitializeComponent();
     }
-    
+
     #region MAIN EVENTS
-    
+
     /// <summary>
     /// Hyperlink, that opens repository's page in the browser.
     /// </summary>
@@ -36,11 +36,11 @@ public partial class AboutWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     #endregion
-    
+
     #region WINDOW EVENTS
-    
+
     /// <summary>
     /// Gets application's version from the assembly and sets the repository link to the hyperlink.
     /// </summary>
@@ -59,6 +59,6 @@ public partial class AboutWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     #endregion
 }

@@ -8,7 +8,8 @@ namespace MinecraftNotes.Other;
 /// </summary>
 public static class Constants
 {
-    public static string SavePath { get; } = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\JustChickNugget\MinecraftNotes.json";
+    public static string SavePath { get; } =
+        $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\JustChickNugget\MinecraftNotes.json";
 
     private static string DeveloperLink => "https://github.com/JustChickNugget";
     public static string RepositoryLink { get; } = $"{DeveloperLink}/MinecraftNotes";
@@ -21,7 +22,7 @@ public static class Constants
         FileName = Path.GetDirectoryName(SavePath),
         UseShellExecute = true
     };
-    
+
     public static ProcessStartInfo DeveloperGitHubProcessStartInfo { get; } = new()
     {
         FileName = DeveloperLink,

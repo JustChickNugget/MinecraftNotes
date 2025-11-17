@@ -1,12 +1,12 @@
-﻿using MinecraftNotes.Windows;
-using MinecraftNotes.Utilities;
-using MinecraftNotes.Structs;
-using MinecraftNotes.Other;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MinecraftNotes.Other;
+using MinecraftNotes.Structs;
+using MinecraftNotes.Utilities;
+using MinecraftNotes.Windows;
 
 namespace MinecraftNotes;
 
@@ -23,7 +23,7 @@ public partial class MainWindow
     }
 
     #region MAIN EVENTS
-    
+
     /// <summary>
     /// Add world to the JSON file using data from the inputs.
     /// </summary>
@@ -34,12 +34,16 @@ public partial class MainWindow
             string worldName = WorldNameTextBox.Text.Trim();
 
             if (string.IsNullOrEmpty(worldName))
+            {
                 throw new ArgumentNullException(null, "World name cannot be null or empty.");
+            }
 
             string placeName = PlaceNameTextBox.Text.Trim();
 
             if (string.IsNullOrEmpty(placeName))
+            {
                 throw new ArgumentNullException(null, "Place name cannot be null or empty.");
+            }
 
             string placeLocationX = PlaceLocationXTextBox.Text.Trim();
             string placeLocationY = PlaceLocationYTextBox.Text.Trim();
@@ -66,7 +70,7 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     /// <summary>
     /// If the user has selected a different world in the list, we update the places list view to display all saved
     /// places of the selected world object.
@@ -84,12 +88,16 @@ public partial class MainWindow
             }
 
             if (Worlds == null)
+            {
                 return;
+            }
 
             PlaceListView.Items.Clear();
 
             foreach (WorldPlace worldPlace in Worlds[selectedItem])
+            {
                 PlaceListView.Items.Add(worldPlace);
+            }
         }
         catch (Exception ex)
         {
@@ -98,7 +106,7 @@ public partial class MainWindow
     }
 
     #region CONTEXT MENU EVENTS
-    
+
     /// <summary>
     /// Refresh data from the JSON file.
     /// </summary>
@@ -110,15 +118,21 @@ public partial class MainWindow
             string selectedWorldName = "";
 
             if (WorldListBox.SelectedItems.Count > 0)
+            {
                 selectedWorldName = (string)WorldListBox.SelectedItem;
+            }
 
             WorldListBox.Items.Clear();
 
             foreach (string worldName in Worlds.Keys)
+            {
                 WorldListBox.Items.Add(worldName);
+            }
 
             if (!string.IsNullOrEmpty(selectedWorldName) && WorldListBox.Items.Contains(selectedWorldName))
+            {
                 WorldListBox.SelectedItem = selectedWorldName;
+            }
         }
         catch (Exception ex)
         {
@@ -127,7 +141,7 @@ public partial class MainWindow
     }
 
     #region WORLD
-    
+
     /// <summary>
     /// Extract selected world's name to the text box.
     /// </summary>
@@ -136,8 +150,10 @@ public partial class MainWindow
         try
         {
             if (WorldListBox.SelectedItems.Count <= 0)
+            {
                 return;
-            
+            }
+
             string worldName = (string)WorldListBox.SelectedItem;
             WorldNameTextBox.Text = worldName;
         }
@@ -146,7 +162,7 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     /// <summary>
     /// Show edit window for worlds.
     /// </summary>
@@ -155,13 +171,15 @@ public partial class MainWindow
         try
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0)
+            {
                 return;
+            }
 
             string worldName = (string)WorldListBox.SelectedItem;
-            
+
             EditWorldWindow editWorldWindow = new(worldName);
             editWorldWindow.ShowDialog();
-            
+
             RefreshMenuItem_OnClick(sender, e);
         }
         catch (Exception ex)
@@ -169,7 +187,7 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     /// <summary>
     /// Delete world and save JSON file.
     /// </summary>
@@ -178,7 +196,9 @@ public partial class MainWindow
         try
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0)
+            {
                 return;
+            }
 
             foreach (object selectedItem in WorldListBox.SelectedItems)
             {
@@ -196,9 +216,9 @@ public partial class MainWindow
     }
 
     #endregion
-    
+
     #region PLACES
-    
+
     /// <summary>
     /// Extract the selected world name, place name and its location into text fields.
     /// </summary>
@@ -207,11 +227,13 @@ public partial class MainWindow
         try
         {
             if (WorldListBox.SelectedItems.Count <= 0 || PlaceListView.SelectedItems.Count <= 0)
+            {
                 return;
-            
+            }
+
             string worldName = (string)WorldListBox.SelectedItem;
             WorldPlace worldPlace = (WorldPlace)PlaceListView.SelectedItem;
-            
+
             WorldNameTextBox.Text = worldName;
             PlaceNameTextBox.Text = worldPlace.Name;
             PlaceLocationXTextBox.Text = worldPlace.Location.X.ToString();
@@ -223,7 +245,7 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     /// <summary>
     /// Extract place name and location into text boxes (without selected world name).
     /// </summary>
@@ -232,10 +254,12 @@ public partial class MainWindow
         try
         {
             if (PlaceListView.SelectedItems.Count <= 0)
+            {
                 return;
-            
+            }
+
             WorldPlace worldPlace = (WorldPlace)PlaceListView.SelectedItem;
-            
+
             PlaceNameTextBox.Text = worldPlace.Name;
             PlaceLocationXTextBox.Text = worldPlace.Location.X.ToString();
             PlaceLocationYTextBox.Text = worldPlace.Location.Y.ToString();
@@ -246,7 +270,7 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     /// <summary>
     /// Show edit window for places.
     /// </summary>
@@ -255,14 +279,16 @@ public partial class MainWindow
         try
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0 || PlaceListView.SelectedItems.Count <= 0)
+            {
                 return;
+            }
 
             string worldName = (string)WorldListBox.SelectedItem;
             WorldPlace worldPlace = (WorldPlace)PlaceListView.SelectedItem;
-            
+
             EditPlaceWindow editPlaceWindow = new(worldName, worldPlace);
             editPlaceWindow.ShowDialog();
-            
+
             RefreshMenuItem_OnClick(sender, e);
         }
         catch (Exception ex)
@@ -270,7 +296,7 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     /// <summary>
     /// Delete place from the selected world object and save JSON file.
     /// </summary>
@@ -279,12 +305,14 @@ public partial class MainWindow
         try
         {
             if (Worlds == null || WorldListBox.SelectedItems.Count <= 0 || PlaceListView.SelectedItems.Count <= 0)
+            {
                 return;
+            }
 
             foreach (object selectedItem in PlaceListView.SelectedItems)
             {
-                WorldPlace worldPlace = (WorldPlace)
-                    (selectedItem ?? throw new InvalidOperationException("Got null while getting data from list view."));
+                WorldPlace worldPlace = (WorldPlace)(selectedItem ?? throw new InvalidOperationException(
+                    "Got null while getting data from list view."));
 
                 string worldName = (string)WorldListBox.SelectedItem;
                 List<WorldPlace> worldPlaces = Worlds[worldName];
@@ -301,13 +329,13 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     #endregion
-    
+
     #endregion
 
     #region MENU EVENTS
-    
+
     /// <summary>
     /// Open directory that contains JSON file.
     /// </summary>
@@ -318,7 +346,7 @@ public partial class MainWindow
             if (!Directory.Exists(Path.GetDirectoryName(Constants.SavePath)))
             {
                 Directory.CreateDirectory(
-                    Path.GetDirectoryName(Constants.SavePath) 
+                    Path.GetDirectoryName(Constants.SavePath)
                     ?? throw new InvalidOperationException("Directory path is null or empty."));
             }
 
@@ -362,7 +390,7 @@ public partial class MainWindow
                     "Update checker",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Information);
-                
+
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
                     Process.Start(new ProcessStartInfo
@@ -398,11 +426,11 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     #endregion
-    
+
     #endregion
-    
+
     #region WINDOW EVENTS
 
     /// <summary>
@@ -428,7 +456,9 @@ public partial class MainWindow
         try
         {
             if (e.Key != Key.Enter)
+            {
                 return;
+            }
 
             e.Handled = true;
             WorldAddButton_OnClick(sender, e);
@@ -438,6 +468,6 @@ public partial class MainWindow
             ToolBox.PrintException(ex);
         }
     }
-    
+
     #endregion
 }

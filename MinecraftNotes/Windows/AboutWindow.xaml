@@ -10,18 +10,18 @@
         ResizeMode="NoResize"
         SnapsToDevicePixels="True"
         Loaded="Window_OnLoaded">
-    
+
     <StackPanel Margin="25 15">
         <StackPanel Margin="0 0 0 5">
             <Label
                 Padding="0"
                 Content="Minecraft Notes"
                 FontSize="16" />
-            
+
             <TextBlock
                 Padding="0 5 0 5"
                 Text="Take notes about your Minecraft worlds" />
-            
+
             <Label
                 x:Name="VersionLabel"
                 Padding="0"
@@ -29,10 +29,11 @@
                 FontStyle="Italic"
                 HorizontalAlignment="Right" />
         </StackPanel>
-        
+
         <Label Padding="0">
-            <Hyperlink x:Name="RepositoryHyperlink"
-                       RequestNavigate="RepositoryHyperlink_OnRequestNavigate">
+            <Hyperlink
+                x:Name="RepositoryHyperlink"
+                RequestNavigate="RepositoryHyperlink_OnRequestNavigate">
                 Repository
             </Hyperlink>
         </Label>

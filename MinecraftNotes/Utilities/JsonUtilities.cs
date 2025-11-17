@@ -1,7 +1,7 @@
-﻿using MinecraftNotes.Structs;
-using MinecraftNotes.Other;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
+using MinecraftNotes.Other;
+using MinecraftNotes.Structs;
 
 namespace MinecraftNotes.Utilities;
 
@@ -24,7 +24,7 @@ public static class JsonUtilities
         string json = JsonSerializer.Serialize(worlds, SerializerOptions);
         File.WriteAllText(Constants.SavePath, json);
     }
-    
+
     /// <summary>
     /// Append world data to the JSON file.
     /// </summary>
@@ -36,12 +36,12 @@ public static class JsonUtilities
         if (!Directory.Exists(Path.GetDirectoryName(Constants.SavePath)))
         {
             Directory.CreateDirectory(
-                Path.GetDirectoryName(Constants.SavePath) 
+                Path.GetDirectoryName(Constants.SavePath)
                 ?? throw new InvalidOperationException("Directory path is null or empty."));
         }
 
         Dictionary<string, List<WorldPlace>> worlds;
-        
+
         if (File.Exists(Constants.SavePath))
         {
             worlds = JsonSerializer.Deserialize<Dictionary<string, List<WorldPlace>>>
@@ -51,7 +51,9 @@ public static class JsonUtilities
             if (worlds.TryGetValue(worldName, out List<WorldPlace>? worldPlaces))
             {
                 if (!worldPlaces.Contains(worldPlace))
+                {
                     worldPlaces.Add(worldPlace);
+                }
             }
             else
             {
@@ -65,7 +67,7 @@ public static class JsonUtilities
                 { worldName, [worldPlace] }
             };
         }
-        
+
         string json = JsonSerializer.Serialize(worlds, SerializerOptions);
         File.WriteAllText(Constants.SavePath, json);
 
@@ -86,11 +88,13 @@ public static class JsonUtilities
         }
 
         if (!File.Exists(Constants.SavePath))
+        {
             return new Dictionary<string, List<WorldPlace>>();
+        }
 
         Dictionary<string, List<WorldPlace>> worlds =
             JsonSerializer.Deserialize<Dictionary<string, List<WorldPlace>>>
-                (File.ReadAllText(Constants.SavePath), SerializerOptions) 
+                (File.ReadAllText(Constants.SavePath), SerializerOptions)
             ?? throw new InvalidOperationException();
 
         return worlds;
