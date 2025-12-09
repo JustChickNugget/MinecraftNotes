@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Windows;
 using MinecraftNotes.Other;
-using MinecraftNotes.Structs.API;
+using MinecraftNotes.Structs.Api;
 
 #if DEBUG
 using System.Diagnostics;

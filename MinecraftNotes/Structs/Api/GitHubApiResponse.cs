@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace MinecraftNotes.Structs.API;
+namespace MinecraftNotes.Structs.Api;
 
 /// <summary>
 /// Contains latest tag name which is marked as version.
