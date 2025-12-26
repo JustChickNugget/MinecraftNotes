@@ -3,9 +3,13 @@
 namespace MinecraftNotes.Structs.Api;
 
 /// <summary>
-/// Contains latest tag name which is marked as version.
+/// Contains GitHub's API response attributes.
 /// </summary>
-public readonly struct GitHubApiResponse
+public class GitHubApiResponse
 {
-    [JsonPropertyName("tag_name")] public required string TagName { get; init; }
+    /// <summary>
+    /// Tag name from the response.
+    /// </summary>
+    [JsonPropertyName("tag_name")]
+    public required string TagName { get; init; }
 }

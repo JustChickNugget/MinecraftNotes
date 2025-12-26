@@ -5,16 +5,18 @@
 /// </summary>
 public readonly record struct Location
 {
+    /// <summary>
+    /// Location's X coordinate.
+    /// </summary>
     public required int X { get; init; }
-    public required int Y { get; init; }
-    public required int Z { get; init; }
 
     /// <summary>
-    /// Converts a structure to a string.
+    /// Location's Y coordinate.
     /// </summary>
-    /// <returns>A string of location coordinates in the format: "X: ..., Y: ..., Z: ..."</returns>
-    public override string ToString()
-    {
-        return $"X: {X}, Y: {Y}, Z: {Z}";
-    }
+    public required int Y { get; init; }
+
+    /// <summary>
+    /// Location's Z coordinate.
+    /// </summary>
+    public required int Z { get; init; }
 }
