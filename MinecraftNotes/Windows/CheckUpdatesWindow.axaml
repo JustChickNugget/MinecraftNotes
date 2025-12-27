@@ -6,10 +6,11 @@
         mc:Ignorable="d"
         d:DesignWidth="400"
         Width="400"
-        Title="Check Updates"
+        MinWidth="400"
         SizeToContent="Height"
         WindowStartupLocation="CenterScreen"
         CanResize="False"
+        Title="Check Updates"
         KeyDown="Window_OnKeyDown">
     <StackPanel
         Margin="15"
