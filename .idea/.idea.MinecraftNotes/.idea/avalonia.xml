@@ -8,6 +8,7 @@
         <entry key="MinecraftNotes/Windows/AboutWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
         <entry key="MinecraftNotes/Windows/CheckUpdatesWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
         <entry key="MinecraftNotes/Windows/EditPlaceWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
+        <entry key="MinecraftNotes/Windows/EditWorldWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
         <entry key="MinecraftNotes/Windows/ExceptionWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
       </map>
     </option>

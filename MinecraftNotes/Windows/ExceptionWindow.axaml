@@ -10,8 +10,8 @@
         Height="350"
         MinWidth="600"
         MinHeight="350"
-        Title="An exception has occurred"
         WindowStartupLocation="CenterScreen"
+        Title="An exception has occurred"
         Loaded="Window_OnLoaded"
         KeyDown="Window_OnKeyDown">
     <Grid

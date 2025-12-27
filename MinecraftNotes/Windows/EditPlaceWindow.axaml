@@ -4,10 +4,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="MinecraftNotes.Windows.EditPlaceWindow"
         mc:Ignorable="d"
-        Title="Edit Place"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         CanResize="False"
+        Title="Edit Place"
         KeyDown="Window_OnKeyDown">
     <StackPanel
         Margin="15"
