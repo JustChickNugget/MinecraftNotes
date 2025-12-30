@@ -1,9 +1,13 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Reflection;
 using System.Text.Json;
-using System.Windows;
+using System.Threading;
+using System.Threading.Tasks;
+using Avalonia.Controls;
+using MinecraftNotes.Models.Api;
 using MinecraftNotes.Other;
-using MinecraftNotes.Structs.Api;
+using MinecraftNotes.Windows;
 
 #if DEBUG
 using System.Diagnostics;
@@ -19,14 +23,19 @@ public static class ToolBox
     /// <summary>
     /// Check for updates using GitHub's API.
     /// </summary>
-    /// <param name="cancellationToken">Token to cancel operations.</param>
-    public static async Task<bool> CheckForUpdates(CancellationToken cancellationToken = default)
+    /// <param name="cancellationToken">Cancellation token object</param>
+    public static async Task<bool> CheckForUpdatesAsync(CancellationToken cancellationToken = default)
     {
         using HttpClient client = new();
         client.DefaultRequestHeaders.Add("User-Agent", "NuggetLib");
 
-        string response = await client.GetStringAsync(Constants.ReleasesApiLink, cancellationToken);
-        GitHubApiResponse gitHubApiResponse = JsonSerializer.Deserialize<GitHubApiResponse>(response);
+        string response = await client.GetStringAsync(Constants.LatestReleaseApiLink, cancellationToken);
+        GitHubApiResponse? gitHubApiResponse = JsonSerializer.Deserialize<GitHubApiResponse>(response);
+
+        if (gitHubApiResponse == null)
+        {
+            throw new ArgumentNullException(null, "GitHub API response is null.");
+        }
 
         if (gitHubApiResponse.TagName == null)
         {
@@ -54,18 +63,28 @@ public static class ToolBox
     /// <summary>
     /// Print exception if it has occurred.
     /// </summary>
-    /// <param name="ex">An object containing the exception stack trace.</param>
-    public static void PrintException(Exception ex)
+    /// <param name="ownerWindow">Window in which the exception occurred</param>
+    /// <param name="exception">Exception object</param>
+    /// <param name="className">Name of the class where the exception occurred</param>
+    /// <param name="functionName">Name of the function where the exception occurred</param>
+    /// <param name="onlyDebugPrintException">Only debug print the exception without creating an exception window</param>
+    public static async Task PrintException(
+        Window ownerWindow,
+        Exception exception,
+        string className,
+        string functionName,
+        bool onlyDebugPrintException = false)
     {
-        string title = $"An exception has occurred ({ex.GetType().FullName})";
-
 #if DEBUG
-        string exceptionString = ex.ToString();
-
-        MessageBox.Show(exceptionString, title, MessageBoxButton.OK, MessageBoxImage.Error);
-        Debug.WriteLine(exceptionString);
-#else
-        MessageBox.Show(ex.Message, title, MessageBoxButton.OK, MessageBoxImage.Error);
+        Debug.WriteLine($"[{className}] -> ({functionName}): \"{exception.Message}\"");
 #endif
+
+        if (onlyDebugPrintException)
+        {
+            return;
+        }
+
+        ExceptionWindow exceptionWindow = new(exception, className, functionName);
+        await exceptionWindow.ShowDialog(ownerWindow);
     }
 }

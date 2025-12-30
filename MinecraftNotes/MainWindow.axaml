@@ -1,0 +1,233 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:MinecraftNotes.ViewModels"
+        xmlns:minecraft="clr-namespace:MinecraftNotes.Models.Minecraft"
+        x:Class="MinecraftNotes.MainWindow"
+        mc:Ignorable="d"
+        d:DesignWidth="950"
+        d:DesignHeight="600"
+        Width="950"
+        Height="600"
+        MinWidth="500"
+        MinHeight="300"
+        Title="Minecraft Notes"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_OnLoaded"
+        KeyDown="Window_OnKeyDown">
+    <ScrollViewer>
+        <Grid
+            RowDefinitions="Auto, Auto, *"
+            RowSpacing="5">
+            <Menu
+                Grid.Row="0"
+                Background="Transparent">
+                <MenuItem Header="View">
+                    <MenuItem
+                        Header="View save directory"
+                        Click="ViewSaveDirectoryMenuItem_OnClick" />
+                </MenuItem>
+
+                <MenuItem Header="Help">
+                    <MenuItem Header="Application">
+                        <MenuItem
+                            Header="About"
+                            Click="AboutApplicationMenuItem_OnClick" />
+
+                        <MenuItem
+                            Header="Check for updates"
+                            Click="CheckForUpdatesMenuItem_OnClick" />
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+
+            <HeaderedContentControl
+                Grid.Row="1"
+                Margin="15, 0"
+                Header="Information">
+                <StackPanel
+                    Orientation="Vertical"
+                    Margin="15, 5"
+                    Spacing="5">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Name of the world:" />
+                        <TextBox x:Name="WorldNameTextBox" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Name of a place in the world:" />
+                        <TextBox x:Name="PlaceNameTextBox" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Orientation="Vertical"
+                        Margin="0, 0, 0, 10">
+                        <Grid
+                            ColumnDefinitions="*, *, *"
+                            ColumnSpacing="15">
+                            <StackPanel
+                                Grid.Column="0"
+                                Orientation="Vertical">
+                                <Label
+                                    Content="X"
+                                    HorizontalAlignment="Center" />
+
+                                <TextBox
+                                    x:Name="PlaceLocationXTextBox"
+                                    HorizontalContentAlignment="Center" />
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="1"
+                                Orientation="Vertical">
+                                <Label
+                                    Content="Y"
+                                    HorizontalAlignment="Center" />
+
+                                <TextBox
+                                    x:Name="PlaceLocationYTextBox"
+                                    HorizontalContentAlignment="Center" />
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="2"
+                                Orientation="Vertical">
+                                <Label
+                                    Content="Z"
+                                    HorizontalAlignment="Center" />
+
+                                <TextBox
+                                    x:Name="PlaceLocationZTextBox"
+                                    HorizontalContentAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <Button
+                        x:Name="WorldAddButton"
+                        Content="Add"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        Click="AddWorldButton_OnClick" />
+                </StackPanel>
+            </HeaderedContentControl>
+
+            <Grid
+                Grid.Row="2"
+                ColumnDefinitions="*, Auto, 2*"
+                ColumnSpacing="7"
+                Margin="15, 5, 15, 15"
+                MinHeight="125">
+                <ListBox
+                    x:Name="WorldListBox"
+                    Grid.Column="0"
+                    ItemsSource="{Binding Path=WorldNames, DataType=vm:MainViewModel}"
+                    SelectedItem="{Binding Path=SelectedWorld, DataType=vm:MainViewModel}"
+                    SelectionMode="Single">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Header="Refresh"
+                                Click="RefreshMenuItem_OnClick" />
+
+                            <MenuItem
+                                Header="Extract"
+                                Click="WorldExtractMenuItem_OnClick" />
+
+                            <Separator />
+
+                            <MenuItem
+                                Header="Edit"
+                                Click="WorldEditMenuItem_OnClick" />
+
+                            <MenuItem
+                                Header="Delete"
+                                Click="WorldDeleteMenuItem_OnClick" />
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                </ListBox>
+
+                <GridSplitter
+                    Grid.Column="1"
+                    Width="3"
+                    MinWidth="3"
+                    MaxWidth="3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch" />
+
+                <Border
+                    Grid.Column="2"
+                    CornerRadius="4"
+                    Background="{DynamicResource ResourceKey=BaseColor}"
+                    ClipToBounds="True">
+                    <DataGrid
+                        x:Name="PlaceDataGrid"
+                        ItemsSource="{Binding Path=SelectedWorldPlaces, DataType=vm:MainViewModel}"
+                        AutoGenerateColumns="False"
+                        CanUserResizeColumns="True"
+                        CanUserSortColumns="True"
+                        CanUserReorderColumns="False"
+                        SelectionMode="Single"
+                        IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Header="Place name"
+                                Binding="{Binding Path=Name, DataType=minecraft:WorldPlace}"
+                                Width="300" />
+
+                            <DataGridTextColumn
+                                Header="X"
+                                Binding="{Binding Path=Location.X, DataType=minecraft:WorldPlace}"
+                                Width="100" />
+
+                            <DataGridTextColumn
+                                Header="Y"
+                                Binding="{Binding Path=Location.Y, DataType=minecraft:WorldPlace}"
+                                Width="100" />
+
+                            <DataGridTextColumn
+                                Header="Z"
+                                Binding="{Binding Path=Location.Z, DataType=minecraft:WorldPlace}"
+                                Width="100" />
+                        </DataGrid.Columns>
+
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem
+                                    Header="Refresh"
+                                    Click="RefreshMenuItem_OnClick" />
+
+                                <MenuItem Header="Extract">
+                                    <MenuItem
+                                        Header="With world name"
+                                        Click="PlaceDataGridExtractWithWorldNameMenuItem_OnClick" />
+
+                                    <MenuItem
+                                        Header="Without world name"
+                                        Click="PlaceDataGridExtractWithoutWorldNameMenuItem_OnClick" />
+                                </MenuItem>
+
+                                <Separator />
+
+                                <MenuItem
+                                    Header="Edit"
+                                    Click="PlaceDataGridEditMenuItem_OnClick" />
+
+                                <MenuItem
+                                    Header="Delete"
+                                    Click="PlaceDataGridDeleteMenuItem_OnClick" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                    </DataGrid>
+                </Border>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>

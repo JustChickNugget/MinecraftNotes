@@ -1,0 +1,73 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="MinecraftNotes.Windows.EditPlaceWindow"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Title="Edit Place"
+        KeyDown="Window_OnKeyDown">
+    <StackPanel
+        Orientation="Vertical"
+        Margin="15">
+        <StackPanel Orientation="Vertical">
+            <Label Content="New place name:" />
+
+            <TextBox
+                x:Name="NewPlaceNameTextBox"
+                MinWidth="400" />
+        </StackPanel>
+
+        <StackPanel
+            Orientation="Vertical"
+            Margin="0, 5, 0, 10">
+            <Grid
+                ColumnDefinitions="*, *, *"
+                ColumnSpacing="15">
+                <StackPanel
+                    Grid.Column="0"
+                    Orientation="Vertical">
+                    <Label
+                        Content="X"
+                        HorizontalAlignment="Center" />
+
+                    <TextBox
+                        x:Name="NewPlaceLocationXTextBox"
+                        HorizontalContentAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Vertical">
+                    <Label
+                        Content="Y"
+                        HorizontalAlignment="Center" />
+
+                    <TextBox
+                        x:Name="NewPlaceLocationYTextBox"
+                        HorizontalContentAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="2"
+                    Orientation="Vertical">
+                    <Label
+                        Content="Z"
+                        HorizontalAlignment="Center" />
+
+                    <TextBox
+                        x:Name="NewPlaceLocationZTextBox"
+                        HorizontalContentAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <Button
+            Content="Save"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            Click="SaveButton_OnClick" />
+    </StackPanel>
+</Window>

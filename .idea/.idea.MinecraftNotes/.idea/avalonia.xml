@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="MinecraftNotes/App.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
+        <entry key="MinecraftNotes/MainWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
+        <entry key="MinecraftNotes/Windows/AboutWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
+        <entry key="MinecraftNotes/Windows/CheckUpdatesWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
+        <entry key="MinecraftNotes/Windows/EditPlaceWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
+        <entry key="MinecraftNotes/Windows/EditWorldWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
+        <entry key="MinecraftNotes/Windows/ExceptionWindow.axaml" value="MinecraftNotes/MinecraftNotes.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
