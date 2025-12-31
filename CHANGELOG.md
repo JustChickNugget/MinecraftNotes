@@ -1,5 +1,18 @@
 ﻿# Changelog
 
+## 2.0.0 - 2025-12-31
+
+### Important changes
+
+- The application has been rewritten from WPF to Avalonia.
+
+### Changes
+
+- Exceptions are now displayed in a separate window.
+- The update checker is now displayed in a separate window.
+- Updated "About" window.
+- Updated application icon.
+
 ## 1.1.1 - 2025-07-27
 
 ### Added
