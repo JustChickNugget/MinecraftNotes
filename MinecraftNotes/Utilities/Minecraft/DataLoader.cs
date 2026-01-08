@@ -5,12 +5,12 @@ using System.Text.Json;
 using MinecraftNotes.Models.Minecraft;
 using MinecraftNotes.Other;
 
-namespace MinecraftNotes.Utilities;
+namespace MinecraftNotes.Utilities.Minecraft;
 
 /// <summary>
 /// Static class containing functions to easily work with the JSON and worlds.
 /// </summary>
-public static class JsonUtilities
+public static class DataLoader
 {
     /// <summary>
     /// Default JSON serializer options.
@@ -49,10 +49,9 @@ public static class JsonUtilities
 
         if (File.Exists(Constants.SavePath))
         {
-            worlds =
-                JsonSerializer.Deserialize<Dictionary<string, List<WorldPlace>>>(
-                    File.ReadAllText(Constants.SavePath), SerializerOptions) ??
-                new Dictionary<string, List<WorldPlace>>();
+            worlds = JsonSerializer.Deserialize<Dictionary<string, List<WorldPlace>>>(
+                         File.ReadAllText(Constants.SavePath), SerializerOptions) ??
+                     new Dictionary<string, List<WorldPlace>>();
 
             if (worlds.TryGetValue(worldName, out List<WorldPlace>? worldPlaces))
             {

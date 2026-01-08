@@ -8,6 +8,7 @@ using Avalonia.Interactivity;
 using MinecraftNotes.Models.Minecraft;
 using MinecraftNotes.Other;
 using MinecraftNotes.Utilities;
+using MinecraftNotes.Utilities.Minecraft;
 using MinecraftNotes.ViewModels;
 using MinecraftNotes.Windows;
 using Location = MinecraftNotes.Models.Minecraft.Location;
@@ -100,7 +101,7 @@ public partial class MainWindow : Window
                 Location = location
             };
 
-            MainViewModel.Worlds = JsonUtilities.AppendWorldData(worldName, worldPlace);
+            MainViewModel.Worlds = DataLoader.AppendWorldData(worldName, worldPlace);
         }
         catch (Exception exception)
         {
@@ -117,7 +118,7 @@ public partial class MainWindow : Window
     {
         try
         {
-            MainViewModel.Worlds = JsonUtilities.LoadWorldData();
+            MainViewModel.Worlds = DataLoader.LoadWorldData();
         }
         catch (Exception exception)
         {
@@ -205,7 +206,7 @@ public partial class MainWindow : Window
             }
 
             MainViewModel.Worlds.Remove(worldName);
-            JsonUtilities.SaveWorldData(MainViewModel.Worlds);
+            DataLoader.SaveWorldData(MainViewModel.Worlds);
 
             MainViewModel.RefreshWorldData();
         }
@@ -354,7 +355,7 @@ public partial class MainWindow : Window
             worldPlaces.Remove(worldPlace);
 
             MainViewModel.Worlds[worldName] = worldPlaces;
-            JsonUtilities.SaveWorldData(MainViewModel.Worlds);
+            DataLoader.SaveWorldData(MainViewModel.Worlds);
 
             MainViewModel.RefreshWorldData();
         }
@@ -457,8 +458,7 @@ public partial class MainWindow : Window
     {
         try
         {
-            Dictionary<string, List<WorldPlace>> worlds = JsonUtilities.LoadWorldData();
-            MainViewModel.Worlds = worlds;
+            MainViewModel.Worlds = DataLoader.LoadWorldData();
         }
         catch (Exception exception)
         {

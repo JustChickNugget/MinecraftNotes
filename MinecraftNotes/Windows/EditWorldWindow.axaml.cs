@@ -5,6 +5,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using MinecraftNotes.Models.Minecraft;
 using MinecraftNotes.Utilities;
+using MinecraftNotes.Utilities.Minecraft;
 
 namespace MinecraftNotes.Windows;
 
@@ -69,7 +70,7 @@ public partial class EditWorldWindow : Window
             if (Worlds.Remove(OldWorldName, out List<WorldPlace>? worldPlaces))
             {
                 Worlds[newWorldName] = worldPlaces;
-                JsonUtilities.SaveWorldData(Worlds);
+                DataLoader.SaveWorldData(Worlds);
 
                 Close();
             }

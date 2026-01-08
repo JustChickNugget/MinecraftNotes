@@ -5,6 +5,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using MinecraftNotes.Models.Minecraft;
 using MinecraftNotes.Utilities;
+using MinecraftNotes.Utilities.Minecraft;
 using Location = MinecraftNotes.Models.Minecraft.Location;
 
 namespace MinecraftNotes.Windows;
@@ -103,7 +104,7 @@ public partial class EditPlaceWindow : Window
             worldPlaces[oldWorldPlaceIndex] = newWorldPlace;
 
             Worlds[WorldName] = worldPlaces;
-            JsonUtilities.SaveWorldData(Worlds);
+            DataLoader.SaveWorldData(Worlds);
 
             Close();
         }
