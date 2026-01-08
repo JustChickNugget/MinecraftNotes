@@ -570,7 +570,9 @@ public partial class MainWindow : Window
     {
         try
         {
+#if !GITHUBSCREENSHOT
             MainViewModel.Worlds = DataLoader.LoadWorldData();
+#endif
         }
         catch (Exception exception)
         {

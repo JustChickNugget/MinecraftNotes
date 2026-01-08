@@ -10,6 +10,8 @@
         <ApplicationIcon>Icon.ico</ApplicationIcon>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <Configurations>Debug;Release;GitHubScreenshot</Configurations>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
     <ItemGroup>
