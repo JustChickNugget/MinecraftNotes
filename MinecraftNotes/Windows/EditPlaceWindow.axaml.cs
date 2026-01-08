@@ -127,7 +127,7 @@ public partial class EditPlaceWindow : Window
     #region Window events
 
     /// <summary>
-    /// Handle user's input.
+    /// Handle user input.
     /// </summary>
     /// <param name="sender">Sender object</param>
     /// <param name="e">Event arguments</param>
