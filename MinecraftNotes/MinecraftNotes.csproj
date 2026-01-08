@@ -3,18 +3,13 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <ApplicationManifest>app.manifest</ApplicationManifest>
-        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-        <Version>2.0.0</Version>
-        <Title>MinecraftNotes</Title>
-        <Authors>JustChickNugget</Authors>
-        <Description>Take notes about your Minecraft worlds</Description>
-        <Copyright>JustChickNugget</Copyright>
-        <RepositoryUrl>https://github.com/JustChickNugget/MinecraftNotes</RepositoryUrl>
         <Company>JustChickNugget</Company>
+        <Product>MinecraftNotes</Product>
         <AssemblyVersion>2.0.0</AssemblyVersion>
         <FileVersion>2.0.0</FileVersion>
         <ApplicationIcon>Icon.ico</ApplicationIcon>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,7 +23,7 @@
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="NuggetLib.Core" Version="1.0.0" />
-        <PackageReference Include="NuggetLib.Views" Version="1.0.0" />
+        <PackageReference Include="NuggetLib.Core" Version="1.0.0"/>
+        <PackageReference Include="NuggetLib.Views" Version="1.0.0"/>
     </ItemGroup>
 </Project>
