@@ -4,7 +4,6 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using MinecraftNotes.Models.Minecraft;
-using MinecraftNotes.Utilities;
 using MinecraftNotes.Utilities.Minecraft;
 
 namespace MinecraftNotes.Windows;
@@ -81,7 +80,16 @@ public partial class EditWorldWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(EditWorldWindow), nameof(SaveButton_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(EditWorldWindow),
+                nameof(SaveButton_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(EditWorldWindow),
+                nameof(SaveButton_OnClick));
         }
     }
 
@@ -108,7 +116,16 @@ public partial class EditWorldWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(EditWorldWindow), nameof(Window_OnKeyDown));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(EditWorldWindow),
+                nameof(Window_OnKeyDown));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(EditWorldWindow),
+                nameof(Window_OnKeyDown));
         }
     }
 

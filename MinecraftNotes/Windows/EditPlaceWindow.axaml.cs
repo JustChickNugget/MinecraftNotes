@@ -4,7 +4,6 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using MinecraftNotes.Models.Minecraft;
-using MinecraftNotes.Utilities;
 using MinecraftNotes.Utilities.Minecraft;
 using Location = MinecraftNotes.Models.Minecraft.Location;
 
@@ -110,7 +109,16 @@ public partial class EditPlaceWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(EditPlaceWindow), nameof(SaveButton_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(EditPlaceWindow),
+                nameof(SaveButton_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(EditPlaceWindow),
+                nameof(SaveButton_OnClick));
         }
     }
 
@@ -137,7 +145,16 @@ public partial class EditPlaceWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(EditPlaceWindow), nameof(Window_OnKeyDown));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(EditPlaceWindow),
+                nameof(Window_OnKeyDown));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(EditPlaceWindow),
+                nameof(Window_OnKeyDown));
         }
     }
 

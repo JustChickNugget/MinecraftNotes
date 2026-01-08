@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using MinecraftNotes.Models.Minecraft;
 using MinecraftNotes.Other;
-using MinecraftNotes.Utilities;
 using MinecraftNotes.Utilities.Minecraft;
 using MinecraftNotes.ViewModels;
 using MinecraftNotes.Windows;
@@ -105,7 +105,16 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(AddWorldButton_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(AddWorldButton_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(AddWorldButton_OnClick));
         }
     }
 
@@ -122,7 +131,16 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(RefreshMenuItem_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(RefreshMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(RefreshMenuItem_OnClick));
         }
     }
 
@@ -148,7 +166,16 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(WorldExtractMenuItem_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(WorldExtractMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(WorldExtractMenuItem_OnClick));
         }
     }
 
@@ -180,7 +207,16 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(WorldEditMenuItem_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(WorldEditMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(WorldEditMenuItem_OnClick));
         }
     }
 
@@ -212,7 +248,16 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(WorldDeleteMenuItem_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(WorldDeleteMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(WorldDeleteMenuItem_OnClick));
         }
     }
 
@@ -251,7 +296,12 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(PlaceDataGridExtractWithWorldNameMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
                 nameof(MainWindow),
@@ -282,7 +332,12 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(PlaceDataGridExtractWithoutWorldNameMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
                 nameof(MainWindow),
@@ -320,7 +375,12 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(PlaceDataGridEditMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
                 nameof(MainWindow),
@@ -361,7 +421,12 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(PlaceDataGridDeleteMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
                 nameof(MainWindow),
@@ -401,7 +466,12 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(ViewSaveDirectoryMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
                 nameof(MainWindow),
@@ -418,12 +488,34 @@ public partial class MainWindow : Window
     {
         try
         {
-            AboutWindow aboutWindow = new();
+            Version? version = Assembly.GetExecutingAssembly().GetName().Version;
+
+            if (version == null)
+            {
+                throw new ArgumentNullException(null, "Failed to get version of the application.");
+            }
+
+            NuggetLib.Views.Windows.AboutWindow aboutWindow = new(
+                "Minecraft Notes",
+                "Take notes about your Minecraft worlds",
+                Constants.DeveloperLink,
+                Constants.RepositoryLink,
+                version);
+
             await aboutWindow.ShowDialog(this);
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(AboutApplicationMenuItem_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(AboutApplicationMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(AboutApplicationMenuItem_OnClick));
         }
     }
 
@@ -436,12 +528,32 @@ public partial class MainWindow : Window
     {
         try
         {
-            CheckUpdatesWindow checkUpdatesWindow = new();
-            await checkUpdatesWindow.ShowDialog(this);
+            Version? version = Assembly.GetExecutingAssembly().GetName().Version;
+
+            if (version == null)
+            {
+                throw new ArgumentNullException(null, "Failed to get version of the application.");
+            }
+
+            NuggetLib.Views.Windows.UpdateCheckWindow updateCheckWindow = new(
+                Constants.LatestReleaseLink,
+                Constants.LatestReleaseApiLink,
+                version);
+
+            await updateCheckWindow.ShowDialog(this);
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(CheckForUpdatesMenuItem_OnClick));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(CheckForUpdatesMenuItem_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(CheckForUpdatesMenuItem_OnClick));
         }
     }
 
@@ -462,7 +574,16 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(Window_OnLoaded));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(Window_OnLoaded));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(Window_OnLoaded));
         }
     }
 
@@ -485,7 +606,16 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            await ToolBox.PrintException(this, exception, nameof(MainWindow), nameof(Window_OnKeyDown));
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(Window_OnKeyDown));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(Window_OnKeyDown));
         }
     }
 

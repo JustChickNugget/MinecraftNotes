@@ -28,6 +28,11 @@ public static class Constants
     public static string RepositoryLink { get; } = $"{DeveloperLink}/MinecraftNotes";
 
     /// <summary>
+    /// Link to the latest release of the application.
+    /// </summary>
+    public static string LatestReleaseLink { get; } = $"{RepositoryLink}/releases/latest";
+
+    /// <summary>
     /// API link used to retrieve latest release's information.
     /// </summary>
     public static string LatestReleaseApiLink =>

@@ -28,5 +28,7 @@
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="NuggetLib.Core" Version="1.0.0" />
+        <PackageReference Include="NuggetLib.Views" Version="1.0.0" />
     </ItemGroup>
 </Project>
