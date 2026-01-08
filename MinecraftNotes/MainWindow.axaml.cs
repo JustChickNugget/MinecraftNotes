@@ -119,6 +119,36 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Clear input.
+    /// </summary>
+    /// <param name="sender">Sender object</param>
+    /// <param name="e">Event arguments</param>
+    private async void ClearInputButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        try
+        {
+            WorldNameTextBox.Text = null;
+            PlaceNameTextBox.Text = null;
+            PlaceLocationXTextBox.Text = null;
+            PlaceLocationYTextBox.Text = null;
+            PlaceLocationZTextBox.Text = null;
+        }
+        catch (Exception exception)
+        {
+            NuggetLib.Core.Utilities.DebugLogger.LogException(
+                exception,
+                nameof(MainWindow),
+                nameof(ClearInputButton_OnClick));
+
+            await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
+                this,
+                exception,
+                nameof(MainWindow),
+                nameof(ClearInputButton_OnClick));
+        }
+    }
+
+    /// <summary>
     /// Refresh data.
     /// </summary>
     /// <param name="sender">Sender object</param>

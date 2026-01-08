@@ -104,12 +104,24 @@
                         </Grid>
                     </StackPanel>
 
-                    <Button
-                        x:Name="WorldAddButton"
-                        Content="Add"
-                        HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Center"
-                        Click="AddWorldButton_OnClick" />
+                    <Grid
+                        ColumnDefinitions="*, Auto"
+                        ColumnSpacing="10">
+                        <Button
+                            Grid.Column="0"
+                            Content="Add"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            Click="AddWorldButton_OnClick" />
+
+                        <Button
+                            Grid.Column="1"
+                            Content="Clear input"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            MinWidth="150"
+                            Click="ClearInputButton_OnClick" />
+                    </Grid>
                 </StackPanel>
             </HeaderedContentControl>
 
