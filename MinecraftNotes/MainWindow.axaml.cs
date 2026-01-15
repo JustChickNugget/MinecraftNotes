@@ -105,11 +105,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(AddWorldButton_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -135,11 +130,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(ClearInputButton_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -161,11 +151,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(RefreshMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -196,11 +181,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(WorldExtractMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -237,11 +217,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(WorldEditMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -278,11 +253,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(WorldDeleteMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -326,11 +296,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(PlaceDataGridExtractWithWorldNameMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -362,11 +327,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(PlaceDataGridExtractWithoutWorldNameMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -405,11 +365,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(PlaceDataGridEditMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -451,11 +406,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(PlaceDataGridDeleteMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -496,11 +446,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(ViewSaveDirectoryMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -536,11 +481,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(AboutApplicationMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -574,11 +514,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(CheckForUpdatesMenuItem_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -606,11 +541,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(Window_OnLoaded));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -638,11 +568,6 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(MainWindow),
-                nameof(Window_OnKeyDown));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,

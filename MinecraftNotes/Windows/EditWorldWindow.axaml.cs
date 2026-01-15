@@ -80,11 +80,6 @@ public partial class EditWorldWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(EditWorldWindow),
-                nameof(SaveButton_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -116,11 +111,6 @@ public partial class EditWorldWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(EditWorldWindow),
-                nameof(Window_OnKeyDown));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,

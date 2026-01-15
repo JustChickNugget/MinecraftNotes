@@ -109,11 +109,6 @@ public partial class EditPlaceWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(EditPlaceWindow),
-                nameof(SaveButton_OnClick));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
@@ -145,11 +140,6 @@ public partial class EditPlaceWindow : Window
         }
         catch (Exception exception)
         {
-            NuggetLib.Core.Utilities.DebugLogger.LogException(
-                exception,
-                nameof(EditPlaceWindow),
-                nameof(Window_OnKeyDown));
-
             await NuggetLib.Views.Services.ExceptionHandleService.ShowExceptionAsync(
                 this,
                 exception,
