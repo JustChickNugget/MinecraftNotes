@@ -10,11 +10,20 @@ namespace MinecraftNotes.Other;
 public static class Constants
 {
     /// <summary>
+    /// Old JSON data file save location.
+    /// </summary>
+    public static string OldSavePath { get; } = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        "JustChickNugget",
+        "MinecraftNotes.json");
+
+    /// <summary>
     /// JSON data file save location.
     /// </summary>
     public static string SavePath { get; } = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
         "JustChickNugget",
+        "MinecraftNotes",
         "MinecraftNotes.json");
 
     /// <summary>
